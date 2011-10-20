@@ -17,19 +17,23 @@ class MyHandler(SimpleHTTPRequestHandler):
                 self.send_error(500, "Missed required parameters")
 
             options = {
-                'nif': None,
-                'format': None,
-                'prefix': None,
-                'urirecipe': None
+                'nif': path.get('nif'),
+                'format': path.get('format'),
+                'prefix': path.get('prefix'),
+                'urirecipe': path.get('offset')
                 }
 
             # proceed tagging
-            wrapper = Wrapper()
-            text = wrapper.pos_tag(input_text)
+            wrapper = Wrapper(input_text, options)
+            rdf = wrapper.nlp2rdf()
             self.send_response(200)
-            self.send_header('Content-type','text/html')
+            if options.get('format')[0] == "n3":
+                self.send_header('Content-type','text/html')
+            # TODO more MIME types
+            else:
+                self.send_header('Content-type','application/rdf+xml')
             self.end_headers()
-            self.wfile.write(text)
+            self.wfile.write(rdf)
         else:
             self.send_error(404, "File not found")
 
