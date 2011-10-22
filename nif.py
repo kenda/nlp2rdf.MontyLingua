@@ -1,3 +1,4 @@
+import hashlib
 from rdflib import Graph, URIRef, Literal
 from socket import gethostname
 
@@ -44,16 +45,22 @@ class Wrapper():
         else:
             uri = gethostname()
 
+        word = chunk.split("/")[0]
         # now create the unique identifier
         if self.options.get("urirecipe") == "offset":
-            word = chunk.split("/")[0]
             uri += "#offset_"
             uri += str(self.text.find(word)) + "_"
             uri += str(self.text.find(word) + len(word)) + "_"
-            uri += word[:20]
         elif self.options.get("urirecipe") == "context-hash":
-            # TODO
-            pass
+            uri += "#hash_"
+            uri += "4_"
+            uri += str(len(word)) + "_"
+            index = self.text.find(word)
+            context = self.text[max(0,index-4):index]
+            context += "(" + word + ")"
+            context += self.text[index+len(word):min(len(self.text),index+len(word)+4)]
+            uri += hashlib.md5(context).hexdigest() + "_"
+        uri += word[:20]
 
         return uri
     
@@ -67,7 +74,7 @@ class Wrapper():
     
 if __name__ == "__main__":
     options = {
-        'urirecipe': "offset",
+        'urirecipe': "context-hash",
         'prefix': "http://example.com"
         }
     text = raw_input("Text: ")
