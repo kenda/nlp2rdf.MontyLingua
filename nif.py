@@ -20,15 +20,25 @@ class Wrapper():
         print chunks
 
         graph = Graph()
+
+        # generate the triples referencing the document as a whole
+        doc_uri = self.create_uri(self.text)
+        graph.add((URIRef(doc_uri), URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), URIRef("http://nlp2rdf.lod2.eu/schema/string/Document")))
+        graph.add((URIRef(doc_uri), URIRef("http://nlp2rdf.lod2.eu/schema/string/sourceString"), Literal(self.text)))
+
+        uri_recipe = "OffsetBasedString" if self.options.get("urirecipe") == "offset" else "ContextHashBasedString"
+        graph.add((URIRef(doc_uri), URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), URIRef("http://nlp2rdf.lod2.eu/schema/string/"+uri_recipe)))
         
         # iterate over the chunks
         for chunk in chunks:
 
-            # create uri
             uri = self.create_uri(chunk)
-            print uri
 
-            # create triples
+            # normative requirements
+            graph.add((URIRef(uri), URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), URIRef("http://nlp2rdf.lod2.eu/schema/string/"+uri_recipe)))
+            graph.add((URIRef(doc_uri), URIRef("http://nlp2rdf.lod2.eu/schema/sso/word"), URIRef(uri)))
+            
+            # plain pos tag
             graph.add((URIRef(uri), URIRef("http://nlp2rdf.lod2.eu/schema/sso/posTag"), Literal(chunk.split("/")[1])))
 
         # optionally serialize the graph in a given format

@@ -20,3 +20,6 @@ The webservice runs on port 8001 at /service by default. For parameters etc see 
 `python nif.py`
 
 But this method doesn't support any options yet.
+
+# Example
+Take a look at this [gist](https://gist.github.com/1309886) for an example output.
