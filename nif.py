@@ -1,5 +1,5 @@
 import hashlib
-from rdflib import Graph, URIRef, Literal
+from rdflib import Graph, Literal, Namespace, RDF, URIRef
 from socket import gethostname
 
 from MontyTagger import MontyTagger
@@ -21,13 +21,18 @@ class Wrapper():
 
         graph = Graph()
 
+        # define some namespaces
+        STRING = Namespace("http://nlp2rdf.lod2.eu/schema/string/")
+        SSO =  Namespace("http://nlp2rdf.lod2.eu/schema/sso/")
+
         # generate the triples referencing the document as a whole
         doc_uri = self.create_uri(self.text)
-        graph.add((URIRef(doc_uri), URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), URIRef("http://nlp2rdf.lod2.eu/schema/string/Document")))
-        graph.add((URIRef(doc_uri), URIRef("http://nlp2rdf.lod2.eu/schema/string/sourceString"), Literal(self.text)))
+        graph.add((URIRef(doc_uri), RDF.type, URIRef(STRING+"Document")))
+        graph.add((URIRef(doc_uri), URIRef(STRING+"sourceString"), Literal(self.text)))
 
+        
         uri_recipe = "OffsetBasedString" if self.options.get("urirecipe") == "offset" else "ContextHashBasedString"
-        graph.add((URIRef(doc_uri), URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), URIRef("http://nlp2rdf.lod2.eu/schema/string/"+uri_recipe)))
+        graph.add((URIRef(doc_uri), RDF.type, URIRef(STRING+uri_recipe)))
         
         # iterate over the chunks
         for chunk in chunks:
@@ -35,12 +40,16 @@ class Wrapper():
             uri = self.create_uri(chunk)
 
             # normative requirements
-            graph.add((URIRef(uri), URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), URIRef("http://nlp2rdf.lod2.eu/schema/string/"+uri_recipe)))
-            graph.add((URIRef(doc_uri), URIRef("http://nlp2rdf.lod2.eu/schema/sso/word"), URIRef(uri)))
+            graph.add((URIRef(uri), RDF.type, URIRef(STRING+uri_recipe)))
+            graph.add((URIRef(doc_uri), URIRef(SSO+"word"), URIRef(uri)))
             
             # plain pos tag
-            graph.add((URIRef(uri), URIRef("http://nlp2rdf.lod2.eu/schema/sso/posTag"), Literal(chunk.split("/")[1])))
+            graph.add((URIRef(uri), URIRef(SSO+"posTag"), Literal(chunk.split("/")[1])))
 
+        # some prefix beauty
+        graph.bind('sso', URIRef("http://nlp2rdf.lod2.eu/schema/sso/"))
+        graph.bind('string', URIRef("http://nlp2rdf.lod2.eu/schema/string/"))
+            
         # optionally serialize the graph in a given format
         # TODO RDF/json not supported by rdflib
         if self.options.get('format'):
