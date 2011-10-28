@@ -53,7 +53,7 @@ class Wrapper():
         # optionally serialize the graph in a given format
         # TODO RDF/json not supported by rdflib
         if self.options.get('format'):
-            return graph.serialize(format=self.options.get("format")[0])
+            return graph.serialize(format=self.options.get("format"))
         else:
             return graph.serialize()
 

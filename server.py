@@ -44,12 +44,15 @@ class MyHandler(BaseHTTPRequestHandler):
         rdf = wrapper.nlp2rdf()
         self.send_response(200)
         if options.get('format') == "n3":
-            self.send_header('Content-type','text/html')
-        # TODO more MIME types
+            self.send_header('Content-type','text/n3')
+        elif options.get('format') == "ntriples":
+            self.send_header('Content-type','text/plain')
+        elif options.get('format') == "turtle":
+            self.send_header('Content-type','text/turtle')
         else:
             self.send_header('Content-type','application/rdf+xml')
-            self.end_headers()
-            self.wfile.write(rdf)
+        self.end_headers()
+        self.wfile.write(rdf)
 
     def qs2options(self, qs):
         """
