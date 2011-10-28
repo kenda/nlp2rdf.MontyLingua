@@ -31,7 +31,7 @@ class MyHandler(BaseHTTPRequestHandler):
 
             input_text, options = self.qs2options(para)
             
-            self.response(input_text, para)
+            self.response(input_text, options)
         else:
             self.send_error(404, "File not found")
 
@@ -65,11 +65,12 @@ class MyHandler(BaseHTTPRequestHandler):
         except KeyError:
             self.send_error(500, "Missed required parameters")
 
+        opt = lambda x:x[0] if x else None
         options = {
-            'nif': qs.get('nif'),
-            'format': qs.get('format'),
-            'prefix': qs.get('prefix'),
-            'urirecipe': qs.get('offset')
+            'nif': opt(qs.get('nif')),
+            'format': opt(qs.get('format')),
+            'prefix': opt(qs.get('prefix')),
+            'urirecipe': qs.get('urirecipe')[0] if qs.get('urirecipe') else "offset"
             }
         
         return (input_text, options)
