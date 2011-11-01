@@ -1,4 +1,5 @@
 import hashlib
+import urllib
 from rdflib import Graph, Literal, Namespace, RDF, URIRef
 from socket import gethostname
 
@@ -60,18 +61,18 @@ class Wrapper():
     def create_uri(self, chunk):
         # first we create the the base uri
         if self.options.get("prefix"):
-            uri = self.options.get("prefix")
+            prefix = self.options.get("prefix")
         else:
-            uri = gethostname()
+            prefix = gethostname()
 
         word = chunk.split("/")[0]
         # now create the unique identifier
         if self.options.get("urirecipe") == "offset":
-            uri += "#offset_"
+            uri = "offset_"
             uri += str(self.text.find(word)) + "_"
             uri += str(self.text.find(word) + len(word)) + "_"
         elif self.options.get("urirecipe") == "context-hash":
-            uri += "#hash_"
+            uri = "hash_"
             uri += "4_"
             uri += str(len(word)) + "_"
             index = self.text.find(word)
@@ -81,7 +82,7 @@ class Wrapper():
             uri += hashlib.md5(context).hexdigest() + "_"
         uri += word[:20]
 
-        return uri
+        return prefix + urllib.quote_plus(uri)
     
     def pos_tag(self):
         # tag the text with MontyTagger
@@ -94,7 +95,7 @@ class Wrapper():
 if __name__ == "__main__":
     options = {
         'urirecipe': "context-hash",
-        'prefix': "http://example.com"
+        'prefix': "http://example.com#"
         }
     text = raw_input("Text: ")
     print "---------------------"
