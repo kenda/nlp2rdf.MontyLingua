@@ -1,5 +1,6 @@
 import hashlib
 import urllib
+import re
 from rdflib import Graph, Literal, Namespace, RDF, URIRef
 from socket import gethostname
 
@@ -15,10 +16,10 @@ class Wrapper():
     def __init__(self, text, options=None):
         self.text = text
         self.options = options
+        self.positions = {}
 
     def nlp2rdf(self):
         chunks = self.pos_tag()
-        print chunks
 
         graph = Graph()
 
@@ -31,13 +32,11 @@ class Wrapper():
         graph.add((URIRef(doc_uri), RDF.type, STRING["Document"]))
         graph.add((URIRef(doc_uri), STRING["sourceString"], Literal(self.text)))
 
-        
         uri_recipe = "OffsetBasedString" if self.options.get("urirecipe") == "offset" else "ContextHashBasedString"
         graph.add((URIRef(doc_uri), RDF.type, STRING[uri_recipe]))
         
         # iterate over the chunks
         for chunk in chunks:
-
             uri = self.create_uri(chunk)
 
             # normative requirements
@@ -45,7 +44,8 @@ class Wrapper():
             graph.add((URIRef(doc_uri), SSO["word"], URIRef(uri)))
             
             # plain pos tag
-            graph.add((URIRef(uri), SSO["posTag"], Literal(chunk.split("/")[1])))
+            tag = chunk.split("/")[1]
+            graph.add((URIRef(uri), SSO["posTag"], Literal(tag)))
 
         # some prefix beauty
         graph.bind('sso', URIRef("http://nlp2rdf.lod2.eu/schema/sso/"))
@@ -59,23 +59,46 @@ class Wrapper():
             return graph.serialize()
 
     def create_uri(self, chunk):
+        """
+        This method builds the URI for a given chunk/word.
+
+        It handles the optional prefixes and the two URI recipes.
+        Furthermore it provides a dictionary that saves the positions
+        of words with several occurences.
+        """
         # first we create the the base uri
         if self.options.get("prefix"):
             prefix = self.options.get("prefix")
         else:
-            prefix = gethostname()
+            prefix = gethostname() + "#"
 
         word = chunk.split("/")[0]
+
+        ## calculate the index of the current chunk
+        # find all indices in the text
+        indices = [m.start() for m in re.finditer(re.escape(word), self.text)]
+        if len(indices) > 1:
+            try:
+                # get current position
+                index = indices[self.positions[word]]
+            except KeyError:
+                # the word is not saved yet
+                index = indices[0]
+                self.positions[word] = 0
+            # increase current position
+            self.positions[word] += 1
+        else:
+            index = indices[0]
+            
         # now create the unique identifier
         if self.options.get("urirecipe") == "offset":
             uri = "offset_"
-            uri += str(self.text.find(word)) + "_"
-            uri += str(self.text.find(word) + len(word)) + "_"
+            uri += str(index) + "_"
+            uri += str(index + len(word)) + "_"
         elif self.options.get("urirecipe") == "context-hash":
             uri = "hash_"
             uri += "4_"
             uri += str(len(word)) + "_"
-            index = self.text.find(word)
             context = self.text[max(0,index-4):index]
             context += "(" + word + ")"
             context += self.text[index+len(word):min(len(self.text),index+len(word)+4)]
