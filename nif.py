@@ -28,12 +28,12 @@ class Wrapper():
 
         # generate the triples referencing the document as a whole
         doc_uri = self.create_uri(self.text)
-        graph.add((URIRef(doc_uri), RDF.type, URIRef(STRING+"Document")))
-        graph.add((URIRef(doc_uri), URIRef(STRING+"sourceString"), Literal(self.text)))
+        graph.add((URIRef(doc_uri), RDF.type, STRING["Document"]))
+        graph.add((URIRef(doc_uri), STRING["sourceString"], Literal(self.text)))
 
         
         uri_recipe = "OffsetBasedString" if self.options.get("urirecipe") == "offset" else "ContextHashBasedString"
-        graph.add((URIRef(doc_uri), RDF.type, URIRef(STRING+uri_recipe)))
+        graph.add((URIRef(doc_uri), RDF.type, STRING[uri_recipe]))
         
         # iterate over the chunks
         for chunk in chunks:
@@ -41,11 +41,11 @@ class Wrapper():
             uri = self.create_uri(chunk)
 
             # normative requirements
-            graph.add((URIRef(uri), RDF.type, URIRef(STRING+uri_recipe)))
-            graph.add((URIRef(doc_uri), URIRef(SSO+"word"), URIRef(uri)))
+            graph.add((URIRef(uri), RDF.type, STRING[uri_recipe]))
+            graph.add((URIRef(doc_uri), SSO["word"], URIRef(uri)))
             
             # plain pos tag
-            graph.add((URIRef(uri), URIRef(SSO+"posTag"), Literal(chunk.split("/")[1])))
+            graph.add((URIRef(uri), SSO["posTag"], Literal(chunk.split("/")[1])))
 
         # some prefix beauty
         graph.bind('sso', URIRef("http://nlp2rdf.lod2.eu/schema/sso/"))
