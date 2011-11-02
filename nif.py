@@ -47,6 +47,35 @@ class Wrapper():
             tag = chunk.split("/")[1]
             graph.add((URIRef(uri), SSO["posTag"], Literal(tag)))
 
+            # olia link
+            graph.add((URIRef(uri), SSO["oliaLink"], URIRef("http://purl.org/olia/penn.owl#" + tag)))
+
+            ## BEGIN merge olia inferences
+            olia_graph = Graph()
+            
+            # because filenames are represented as urlencoded strings
+            # we have to double quote the tag here
+            tag = urllib.quote(urllib.quote(tag))
+
+            try:
+                print tag
+                olia_graph.parse("penn/" + tag + ".rdf")
+            except:
+                print "No match for %s in penn-link found!" % (tag + ".rdf")
+                try:
+                    olia_graph.parse("penn-syntax/" + tag + ".rdf")
+                except:
+                    print "No match for %s in penn-syntax found!" % (tag + ".rdf")
+
+            graph += olia_graph
+
+            # get all relevant classes for the given tag and link them as rdf:type
+            type_classes = set([s for s, p, o in olia_graph])
+            for type_class in type_classes:
+                graph.add((URIRef(uri), RDF.type, type_class))
+
+            ## END merge olia inferences
+
         # some prefix beauty
         graph.bind('sso', URIRef("http://nlp2rdf.lod2.eu/schema/sso/"))
         graph.bind('string', URIRef("http://nlp2rdf.lod2.eu/schema/string/"))
