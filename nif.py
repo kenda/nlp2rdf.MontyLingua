@@ -28,7 +28,7 @@ class Wrapper():
         SSO =  Namespace("http://nlp2rdf.lod2.eu/schema/sso/")
 
         # generate the triples referencing the document as a whole
-        doc_uri = self.create_uri(self.text)
+        doc_uri = self.create_uri(self.text, True)
         graph.add((URIRef(doc_uri), RDF.type, STRING["Document"]))
         graph.add((URIRef(doc_uri), STRING["sourceString"], Literal(self.text)))
 
@@ -58,14 +58,13 @@ class Wrapper():
             tag = urllib.quote(urllib.quote(tag))
 
             try:
-                print tag
                 olia_graph.parse("penn/" + tag + ".rdf")
             except:
-                print "No match for %s in penn-link found!" % (tag + ".rdf")
+                print "No match for %s in penn-link found!" % (urllib.unquote(tag) + ".rdf")
                 try:
                     olia_graph.parse("penn-syntax/" + tag + ".rdf")
                 except:
-                    print "No match for %s in penn-syntax found!" % (tag + ".rdf")
+                    print "No match for %s in penn-syntax found!" % (urllib.unquote(tag) + ".rdf")
 
             graph += olia_graph
 
@@ -87,13 +86,16 @@ class Wrapper():
         else:
             return graph.serialize()
 
-    def create_uri(self, chunk):
+    def create_uri(self, chunk, document = False):
         """
         This method builds the URI for a given chunk/word.
 
         It handles the optional prefixes and the two URI recipes.
         Furthermore it provides a dictionary that saves the positions
         of words with several occurences.
+
+        param document - indicates whether the chunk is the whole document
+        and shouldn't be splitted by slashes.
         """
         # first we create the the base uri
         if self.options.get("prefix"):
@@ -101,11 +103,19 @@ class Wrapper():
         else:
             prefix = gethostname() + "#"
 
-        word = chunk.split("/")[0]
+        word = chunk.split("/")[0] if not document else chunk
 
         ## calculate the index of the current chunk
         # find all indices in the text
         indices = [m.start() for m in re.finditer(re.escape(word), self.text)]
+
+        # indices could be None because of - I think - a bug in MontyLingua
+        # which tags me/you as me/PRP :/: you/PRP and so the colon can't be
+        # found in the orginal text. Because the slash is the only known
+        # case of this bug, we simply replace the colon
+        if not indices:
+            indices = [m.start() for m in re.finditer("/", self.text)]
+
         if len(indices) > 1:
             try:
                 # get current position
