@@ -1,0 +1,37 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#Miscellaneous">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#FunctionTag"/>
+    <rdfs:comment>(Bies et al. 1995, §2.2.4)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#FunctionTag">
+    <rdfs:comment>Bies et al. (1995), func label of edges in TIGER</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#TTL">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
+    <rdfs:comment>Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences =&gt; UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. =&gt; Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... =&gt; Feature).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#Title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>= headline or title of an individual ???</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#Miscellaneous"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdfs:comment>UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation.</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>

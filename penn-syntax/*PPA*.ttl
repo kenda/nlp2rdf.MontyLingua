@@ -1,0 +1,74 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/penn-syntax.owl#PPA>
+      a       owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#NullElement>
+      a       owl:Class ;
+      rdfs:comment "Modelled like tokens, Santorini (1991, §4.2), Bies (1995, §2.3, §2.5)" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#TokenLikeElement> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/system.owl#UnitOfAnnotation>
+      a       owl:Class ;
+      rdfs:comment """A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    """ ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#TokenLikeElement>
+      a       owl:Class ;
+      rdfs:comment "Special tokens and pseudo tokens for null elements." ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation> , <http://purl.org/olia/olia.owl#Token> .
+
+<http://purl.org/olia/olia-top.owl#OrthographicEntity>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/penn-syntax.owl#Ambiguity>
+      a       owl:Class ;
+      rdfs:comment """*PPA*
+— Permanent Predictable Ambiguity (ambiguity)  ...
+
+*PPA*-attach is used to indicate ambiguity of attachment of a trace, if the sentence is truly ambiguous (here “why was the decision made” vs. “why do you think it was made”): 
+
+  (SBARQ (WHADVP-1 Why)
+         (SQ do
+             (NP-SBJ you)
+             (VP think
+                 (SBAR 0
+                       (S (NP-SBJ we)
+                          (VP made
+                              (NP that decision)
+                              (ADVP-PRP *PPA*-2))))
+                 (ADVP-PRP-2 *T*-1))))
+
+Note that such ambiguity is unlikely context, so such examples are rare or nonexistent in the actual corpus.
+
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#NullElement> .
+
+<http://purl.org/olia/olia.owl#Token>
+      a       owl:Class ;
+      rdfs:comment """
+                            Character string surrounded by separators.
+                                (Gil Francopoulo; http://www.isocat.org/datcat/DC-1403)
+                            """ ;
+      rdfs:label "token" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#OrthographicEntity> .

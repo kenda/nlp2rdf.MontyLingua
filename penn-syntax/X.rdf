@@ -1,0 +1,38 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#UnknownConstituentType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>X|Constituent of unknown or uncertain type. See Section 5.41.
+(Santorini 1991)
+
+X — Unknown, uncertain, or unbracketable. X is often used for bracketing typos and in bracketing the...the-constructions (see section 10 [Subordinate Clauses] and section 25 [Correlative the-Clauses]). 
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#SyntaxTag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation">
+    <rdfs:comment>A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment>Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences =&gt; UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. =&gt; Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... =&gt; Feature).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#X">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#SyntaxTag">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+    <rdfs:comment>Santorini (1991, §4.1), in TIGER cat label of syntactic nodes</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,104 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#SurfaceSubject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>The surface subject is tagged -SBJ (subject). ...
+-SBJ (surface subject)
+— marks the structural surface subject of both matrix and embedded clauses, including those with null subjects. 
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#GrammaticalRole"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticSubject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#GrammaticalRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#FunctionTag"/>
+    <rdfs:comment>Bies et al. (1995, §2.2.2)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment>The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#FunctionTag">
+    <rdfs:comment>Bies et al. (1995), func label of edges in TIGER</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#SyntacticSubject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticArgument"/>
+    <rdfs:comment>	
+        The subject of a sentence is one of the two main parts of a sentence, 
+        the other being the predicate. Providing an adequate definition of the 
+        notion of a subject is notoriously difficult, and depends on a range 
+        of grammatical properties that may vary from language to language. For 
+        this reason, many current grammatical theories avoid using the term, 
+        except for purely descriptive purposes, or define it in terms of 
+        occupying a particular position in the clause. The term subject refers 
+        to the grammatical function an expression may have in relation to 
+        other expressions in a sentence, and it should be distinguished from 
+        parts of speech, which classify expressions independently of their 
+        relations to other constituents of a sentence.
+
+        The subject of a verb is the argument which generally refers to the 
+        origin of the action or the undergoer of the state shown by the verb. 
+        However, this definition depends on the particular language under 
+        consideration. In languages where a passive voice exists, the subject 
+        of a passive verb may be the target or result of the action. This is a 
+        semantic definition. (http://en.wikipedia.org/wiki/Subject_(grammar)).
+
+		(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#syntacticSubject)
+		</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
+    <rdfs:comment>Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences =&gt; UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. =&gt; Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... =&gt; Feature).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticFeature"/>
+    <rdfs:comment>Traditionally, "grammatical relations" or "grammatical roles" are specifically those between the verb (clause) and its arguments/adjunct/complementizer.
+      In modern corpus research, however, a broad variety of relations between nominal heads, their arguments, modifiers, etc. are distinguished and the scope of "Grammatical Relation" has extended here to cover these as well.
+      (http://purl.org/linguistics/gold/syntacticRole)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdfs:comment>UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#SBJ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#SyntacticArgument">
+    <rdfs:comment>
+			An inherent (morpho)syntactic constituent subcategorized for by a predicate.&lt;br/&gt;
+			'Arguments are those terms which are required by some predicate in 
+			order to form a complete nuclear predication. They are essential to 
+			the integrity of the SoA designated by the predicate frame. If we 
+			leave them out, the property/relation designated by the predicate is 
+			not fulfilled or satisfied.' (Dik, 1997:86f)&lt;br/&gt;
+			An argument can be a controller in an agreement relation.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#syntacticArgument)&lt;br/&gt;
+			
+			The category ARG is assigned to those syntactic constituents that appear as obligatory complements 
+			to the main verb. This means that they cannot be left out without a change in grammaticality or a 
+			significant change in meaning.
+			(Dipper et al. 2007, §4.3.3)
+		</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticRole"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+</rdf:RDF>

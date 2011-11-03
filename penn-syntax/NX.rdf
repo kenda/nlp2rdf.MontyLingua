@@ -1,0 +1,115 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#Constituent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+    <rdfs:comment>
+			Constituents correspond to a GOLD SyntacticConstruction:
+			SyntacticConstruction is the class of grammar units that 
+			have syntactic structure, i.e., consisting of more than 
+			one syntactic word or construction in a syntactic 
+			configuration. [Crystal 1980, 85-86]. 
+			(http://www.linguistics-ontology.org/gold/2008)
+
+			Corresponds to units of annotation in the EAGLES recommendations for syntactic annotation
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node29.html#SECTION00052000000000000000)
+		</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#HeadOfNP">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Head"/>
+    <rdfs:comment>
+			The HeadFunction is a function of an adjective or participle that can serve as the focus of the phrase.
+		</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment>The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticCategory">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
+    <rdfs:comment>Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences =&gt; UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. =&gt; Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... =&gt; Feature).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdfs:comment>UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#HeadOfNP">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>NX — Used within certain complex noun phrases to mark the head of the noun phrase. Corresponds very roughly to N-bar level but used quite differently. ...
+In the case where a noun is modified by an unshared modifier and also shares non-nominal premodifiers with another noun, the NX bracket label is used. That is, unshared items are lumped together with their respective noun heads and bracketed NX, with the shared modifier(s) outside NX (at NP level). The NX levels are then coordinated at the lowest level possible, as usual. 
+
+NX brackets contain the head of the NP and its (unshared) modifiers in complicated NPs where both shared an unshared modifiers are involved. It 
+does not correspond to any particular linguistic structure, although it occasionally resembles “N-bar”. Rather, it exists only to show which modifiers go with which NP head, and is only used when the extent of modification would not otherwise be clear. 
+
+The NAC label, described in section 11 [Modification of NP], plays a similar role of indicating modifiers that go together. However, NAC is only used for pre-head modifiers, while NX always contains the head (or heads) of the NP in which it is found. 
+
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#HeadOfNP"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#Phrase"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#NX">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdfs:comment>A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticFeature"/>
+    <rdfs:comment>Traditionally, "grammatical relations" or "grammatical roles" are specifically those between the verb (clause) and its arguments/adjunct/complementizer.
+      In modern corpus research, however, a broad variety of relations between nominal heads, their arguments, modifiers, etc. are distinguished and the scope of "Grammatical Relation" has extended here to cover these as well.
+      (http://purl.org/linguistics/gold/syntacticRole)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Phrase">
+    <rdfs:comment>
+			Phrase is the class of syntactic constructions that consist of one or more 
+			syntactic words, but lack the subject-predicate organization of a clause. 
+			Phrases get their grammatical characteristics according to what word occupies 
+			the head position; thus, all phrases have heads [Crystal 1980, 232-233; Pei 
+			and Gaynor 1954, 169; Pike and Pike 1982, 453].
+			(http://purl.org/linguistics/gold/Phrase)
+		</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Constituent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#SyntaxTag">
+    <rdfs:comment>Santorini (1991, §4.1), in TIGER cat label of syntactic nodes</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#Phrase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#SyntaxTag"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Phrase"/>
+    <rdfs:comment>(Bies et al. 1995, §2.1.2)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Head">
+    <rdfs:comment>TIGER edge label HD</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticRole"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+</rdf:RDF>

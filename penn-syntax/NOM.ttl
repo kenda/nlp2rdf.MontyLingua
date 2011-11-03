@@ -1,0 +1,62 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/olia.owl#Nominal>
+      a       owl:Class ;
+      rdfs:comment """-NOM (nominal)
+— marks free (“headless”) relatives and gerunds when they act nominally. (See section 9 [WH-Phrases] for more information about free relatives, and section 13 [Gerunds and Participles] for more information about gerunds.) 
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticFunction> .
+
+<http://purl.org/olia/penn-syntax.owl#Nominal>
+      a       owl:Class ;
+      rdfs:comment """-NOM (nominal)
+— marks free (“headless”) relatives and gerunds when they act nominally. (See section 9 [WH-Phrases] for more information about free relatives, and section 13 [Gerunds and Participles] for more information about gerunds.) 
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Nominal> , <http://purl.org/olia/penn-syntax.owl#FormFunctionDiscrepancy> .
+
+<http://purl.org/olia/penn-syntax.owl#NOM>
+      a       owl:Thing .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#FunctionTag>
+      a       owl:Class ;
+      rdfs:comment "Bies et al. (1995), func label of edges in TIGER" ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#Feature> .
+
+<http://purl.org/olia/olia-top.owl#SyntacticFeature>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> , <http://purl.org/olia/system.owl#Feature> .
+
+<http://purl.org/olia/olia-top.owl#SyntacticFunction>
+      a       owl:Class ;
+      rdfs:comment """
+			Relation to be used when the syntactic function of a constituent is different from its morphosyntactic type, 
+			cf. FormFunctionDiscrepancy in the PTB bracketing guidelines, Bies et al. (1995, §2.2.1)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticFeature> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/system.owl#Feature>
+      a       owl:Class ;
+      rdfs:comment "UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation." ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/penn-syntax.owl#FormFunctionDiscrepancy>
+      a       owl:Class ;
+      rdfs:comment "Bies et al. (1995, §2.2.1)" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#FunctionTag> .

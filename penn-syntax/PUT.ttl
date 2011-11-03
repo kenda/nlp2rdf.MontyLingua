@@ -1,0 +1,43 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/penn-syntax.owl#PUT>
+      a       owl:Thing .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/penn-syntax.owl#GrammaticalRole>
+      a       owl:Class ;
+      rdfs:comment "Bies et al. (1995, §2.2.2)" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#FunctionTag> .
+
+<http://purl.org/olia/penn-syntax.owl#FunctionTag>
+      a       owl:Class ;
+      rdfs:comment "Bies et al. (1995), func label of edges in TIGER" ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#Feature> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#LocativeComplementOfPut>
+      a       owl:Class ;
+      rdfs:comment """-PUT
+— marks the locative complement of put. 
+
+  (S (NP-SBJ John)
+     (VP put
+         (NP the book)
+         (PP-PUT on
+                 (NP the table))))
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#GrammaticalRole> .
+
+<http://purl.org/olia/system.owl#Feature>
+      a       owl:Class ;
+      rdfs:comment "UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation." ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .

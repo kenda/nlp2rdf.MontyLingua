@@ -1,0 +1,90 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment>The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticCategory">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment>Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences =&gt; UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. =&gt; Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... =&gt; Feature).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn.owl#NN">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#Word">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+    <rdfs:comment>
+		SyntacticWord is the class of syntactic units occupying the lowest position in 
+		a syntactic construction. They are the largest units resistant to insertion of 
+		new constituents within their boundaries; or they are the smallest constituents 
+		that can be moved within a sentence without making the sentence ungrammatical.
+		(http://www.linguistics-ontology.org/gold/2008/SyntacticWord)
+		
+		Linguistic unit composed of at least a part of speech and a lemma.
+        (Gil Francopoulo; http://www.isocat.org/datcat/DC-1415)
+	</rdfs:comment>
+    <rdfs:label>word</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn.owl#CommonNoun">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>These are common nouns in singular or plural, or mass nouns.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Noun"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#CommonNoun"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Noun">
+    <rdfs:comment>
+	A noun, or noun substantive, is a part of speech (a word or phrase) which can co-occur with 
+	(in)definite articles and attributive adjectives, and function as the head of a noun phrase.
+
+	The word "noun" derives from the Latin 'nomen' meaning "name", and a traditional definition 
+	of nouns is that they are all and only those expressions that refer to a person, place, 
+	thing, event, substance, quality, idea or an appointment. They serve as the subject or object 
+	of a verb, and the object of a preposition.
+	(http://en.wikipedia.org/wiki/Noun 19.09.06)
+	</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Word"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn.owl#Noun">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Noun"/>
+    <rdfs:comment>We inserted this class 'noun' to get a clearer ontology structure. In The Penn Treebank Tag Set there is no class 'noun'.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn.owl#Tag">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#CommonNoun">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Noun"/>
+    <rdfs:comment>
+		A common noun is a noun that signifies a non-specific member of a group.
+		(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsACommonNoun.htm 19.09.06)
+	</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>

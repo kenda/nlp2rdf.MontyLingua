@@ -1,0 +1,131 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#Parenthesis">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#TokenLikeElement"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment>The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#LSB">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
+    <rdfs:comment>Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences =&gt; UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. =&gt; Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... =&gt; Feature).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#Word">
+    <rdfs:label>word</rdfs:label>
+    <rdfs:comment>
+		SyntacticWord is the class of syntactic units occupying the lowest position in 
+		a syntactic construction. They are the largest units resistant to insertion of 
+		new constituents within their boundaries; or they are the smallest constituents 
+		that can be moved within a sentence without making the sentence ungrammatical.
+		(http://www.linguistics-ontology.org/gold/2008/SyntacticWord)
+		
+		Linguistic unit composed of at least a part of speech and a lemma.
+        (Gil Francopoulo; http://www.isocat.org/datcat/DC-1415)
+	</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#LeftSquareBracket">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>[
+*LSB*
+Left square bracket
+(Santorini 1991)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#Parenthesis"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#CloseSquareBracket"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Token">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+    <rdfs:comment>
+                            Character string surrounded by separators.
+                                (Gil Francopoulo; http://www.isocat.org/datcat/DC-1403)
+                            </rdfs:comment>
+    <rdfs:label>token</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#SecondaryPunctuation">
+    <rdfs:label>secondary punctuation</rdfs:label>
+    <rdfs:comment>
+                            Punctuation that is not very important with regards to sentence splitting in a text.
+                                (http://www.isocat.org/datcat/DC-2076)
+                            </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Punctuation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#CloseSquareBracket">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#RightParentheticalPunctuation"/>
+    <rdfs:comment>]
+*RSB*
+Right square bracket
+(Santorini 1991)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#RightParentheticalPunctuation">
+    <rdfs:comment>
+			End of a paired punctuation.
+            (http://www.isocat.org/datcat/DC-2079)
+		
+			RightParentheticalPunctuation is a punctuation mark which concludes a constituent 
+			whose the opening is marked by a LeftParentheticalPunctuation, e.g. ), ] and Spanish ?.
+			(http://www.ilc.cnr.it/EAGLES96/annotate/node17.html#recv 19.09.06)
+		</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ParentheticalPunctuation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdfs:comment>A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Punctuation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Word"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory"/>
+    <rdfs:comment>
+		Punctuation marks (PU) are treated here as a part of morphosyntactic annotation, as it 
+		is very common for punctuation marks to be tagged and to be treated as equivalent to 
+		words for the purposes of automatic tag assignment.
+		(http://www.ilc.cnr.it/EAGLES96/annotate/node16.html#mp 19.09.06)
+	</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#ParentheticalPunctuation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SecondaryPunctuation"/>
+    <rdfs:comment>Parenthetical elements are dominated by a node labeled PRN. Punctuation marks that set off a parenthetical (i.e., commas, dashes, parentheses (-LRB- and -RRB-)) are contained within the PRN node. Use of PRN is determined ultimately by individual annotator intuition, though the presence of dashes or parentheses strongly suggests a parenthetical. 
+(Bies et al. 1995)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#TokenLikeElement">
+    <rdfs:comment>Special tokens and pseudo tokens for null elements.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Token"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+</rdf:RDF>

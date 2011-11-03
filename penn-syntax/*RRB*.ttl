@@ -1,0 +1,127 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/penn-syntax.owl#Parenthesis>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#TokenLikeElement> .
+
+<http://purl.org/olia/olia.owl#CloseBracket>
+      a       owl:Class ;
+      rdfs:comment """
+                            Punctuation that is graphically represented by ]
+                                (http://www.isocat.org/datcat/DC-2083)
+                            """ ;
+      rdfs:label "close bracket" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#RightParentheticalPunctuation> .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#RightRoundBracket>
+      a       owl:Class ;
+      rdfs:comment """)
+*RRB*
+Right round bracket
+(Santorini 1991)""" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#Parenthesis> , <http://purl.org/olia/olia.owl#CloseBracket> .
+
+<http://purl.org/olia/olia-top.owl#SyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia-top.owl#MorphosyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/olia-top.owl#Word>
+      a       owl:Class ;
+      rdfs:comment """
+		SyntacticWord is the class of syntactic units occupying the lowest position in 
+		a syntactic construction. They are the largest units resistant to insertion of 
+		new constituents within their boundaries; or they are the smallest constituents 
+		that can be moved within a sentence without making the sentence ungrammatical.
+		(http://www.linguistics-ontology.org/gold/2008/SyntacticWord)
+		
+		Linguistic unit composed of at least a part of speech and a lemma.
+        (Gil Francopoulo; http://www.isocat.org/datcat/DC-1415)
+	""" ;
+      rdfs:label "word" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/olia-top.owl#OrthographicEntity>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/olia.owl#Token>
+      a       owl:Class ;
+      rdfs:comment """
+                            Character string surrounded by separators.
+                                (Gil Francopoulo; http://www.isocat.org/datcat/DC-1403)
+                            """ ;
+      rdfs:label "token" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#OrthographicEntity> .
+
+<http://purl.org/olia/olia.owl#SecondaryPunctuation>
+      a       owl:Class ;
+      rdfs:comment """
+                            Punctuation that is not very important with regards to sentence splitting in a text.
+                                (http://www.isocat.org/datcat/DC-2076)
+                            """ ;
+      rdfs:label "secondary punctuation" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Punctuation> .
+
+<http://purl.org/olia/olia.owl#RightParentheticalPunctuation>
+      a       owl:Class ;
+      rdfs:comment """
+			End of a paired punctuation.
+            (http://www.isocat.org/datcat/DC-2079)
+		
+			RightParentheticalPunctuation is a punctuation mark which concludes a constituent 
+			whose the opening is marked by a LeftParentheticalPunctuation, e.g. ), ] and Spanish ?.
+			(http://www.ilc.cnr.it/EAGLES96/annotate/node17.html#recv 19.09.06)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#ParentheticalPunctuation> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/system.owl#UnitOfAnnotation>
+      a       owl:Class ;
+      rdfs:comment """A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    """ ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/penn-syntax.owl#RRB>
+      a       owl:Thing .
+
+<http://purl.org/olia/olia.owl#Punctuation>
+      a       owl:Class ;
+      rdfs:comment """
+		Punctuation marks (PU) are treated here as a part of morphosyntactic annotation, as it 
+		is very common for punctuation marks to be tagged and to be treated as equivalent to 
+		words for the purposes of automatic tag assignment.
+		(http://www.ilc.cnr.it/EAGLES96/annotate/node16.html#mp 19.09.06)
+	""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#MorphosyntacticCategory> , <http://purl.org/olia/olia-top.owl#Word> .
+
+<http://purl.org/olia/penn-syntax.owl#TokenLikeElement>
+      a       owl:Class ;
+      rdfs:comment "Special tokens and pseudo tokens for null elements." ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation> , <http://purl.org/olia/olia.owl#Token> .
+
+<http://purl.org/olia/olia.owl#ParentheticalPunctuation>
+      a       owl:Class ;
+      rdfs:comment """Parenthetical elements are dominated by a node labeled PRN. Punctuation marks that set off a parenthetical (i.e., commas, dashes, parentheses (-LRB- and -RRB-)) are contained within the PRN node. Use of PRN is determined ultimately by individual annotator intuition, though the presence of dashes or parentheses strongly suggests a parenthetical. 
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#SecondaryPunctuation> .

@@ -1,0 +1,156 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/olia-top.owl#Constituent>
+      a       owl:Class ;
+      rdfs:comment """
+			Constituents correspond to a GOLD SyntacticConstruction:
+			SyntacticConstruction is the class of grammar units that 
+			have syntactic structure, i.e., consisting of more than 
+			one syntactic word or construction in a syntactic 
+			configuration. [Crystal 1980, 85-86]. 
+			(http://www.linguistics-ontology.org/gold/2008)
+
+			Corresponds to units of annotation in the EAGLES recommendations for syntactic annotation
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node29.html#SECTION00052000000000000000)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#VerbPhrase>
+      a       owl:Class ;
+      rdfs:comment """VP|Verb phrase. Phrasal category headed a verb.
+(Santorini 1991)
+
+VP — Verb Phrase. Phrasal category headed a verb. 
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#Phrase> , <http://purl.org/olia/olia.owl#VerbPhrase> .
+
+<http://purl.org/olia/penn-syntax.owl#VP>
+      a       owl:Thing .
+
+<http://purl.org/olia/system.owl#UnitOfAnnotation>
+      a       owl:Class ;
+      rdfs:comment """A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    """ ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia-top.owl#SyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/olia.owl#Phrase>
+      a       owl:Class ;
+      rdfs:comment """
+			Phrase is the class of syntactic constructions that consist of one or more 
+			syntactic words, but lack the subject-predicate organization of a clause. 
+			Phrases get their grammatical characteristics according to what word occupies 
+			the head position; thus, all phrases have heads [Crystal 1980, 232-233; Pei 
+			and Gaynor 1954, 169; Pike and Pike 1982, 453].
+			(http://purl.org/linguistics/gold/Phrase)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#Constituent> .
+
+<http://purl.org/olia/penn-syntax.owl#SyntaxTag>
+      a       owl:Class ;
+      rdfs:comment "Santorini (1991, §4.1), in TIGER cat label of syntactic nodes" ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation> .
+
+<http://purl.org/olia/penn-syntax.owl#Phrase>
+      a       owl:Class ;
+      rdfs:comment "(Bies et al. 1995, §2.1.2)" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Phrase> , <http://purl.org/olia/penn-syntax.owl#SyntaxTag> .
+
+<http://purl.org/olia/olia.owl#VerbPhrase>
+      a       owl:Class ;
+      rdfs:comment """
+			This category is slightly more difficult to define, since there is disagreement over the extent of the verb phrase.
+			In particular, should the verb phrase include only the words that are verbs, or should it also include the
+			complements of the verb? In the examples given in this document, and in the sample texts in the appendices, we have
+			chosen to include the complements, but it must be noted that this is an open issue, and we are in no way implying
+			that this analysis is preferable to the alternative. The choice to be made at this level, i.e. the inclusion or
+			exclusion of verbal complements in the Verb Phrase, is shown by the examples in 27 and 28, 27 showing the inclusion
+			of the complement of the verb in the verb phrase and 28 excluding the complement:
+
+			(27)  	He [VP took up [NP a clothes brush NP] VP]
+			(28)  	He [VP took up VP] [NP a clothes brush NP]
+
+			An advantage in the type of analysis shown in 27 is that the relative levels of the constituents can be shown to a
+			greater extent -- i.e. complements of the verb are included in the verb phrase, while adjuncts and peripheral
+			adverbials are left at sentence level.
+
+			However, in a case where an adjunct occurs before the complement of the verb, the approaches used in 27 and 28 would
+			cause problems, since either both the adjunct and the complement would be included as daughters of the verb phrase,
+			or both would be daughters of the sentence, rather than keeping the complement as a daughter of the verb phrase and
+			the adjunct as a sister of the verb phrase. These problems may be solved by an additional notation, but at some
+			level, arbitrariness is inevitable.
+
+			Regardless of the choice made over the extent of the Verb Phrase, there arises a problem of discontinuous Verb
+			Phrases. A complex verbal construction may be discontinuous, e.g. the auxiliary and the main verb are separated in
+			inverted constructions in English, or the main verb is positioned at the end of the sentence in German and Dutch.
+			Such discontinuity can be avoided by having different labels and constituents for the auxiliary verb and the main
+			verb, resulting in an analysis as shown in the Dutch example 29 below:
+
+			(29)  	[NP Ze NP] [AUX zullen AUX] [ADVP er ADVP] [VP [NP de VN-agenda 
+					[PP voor [NP het komende jaar NP] PP] NP] behandelen VP].
+					
+			and in the English interrogative inverted example 30, using the so-called `dummy auxiliary' do:
+
+			(30)  	[AUX Do AUX] [NP they NP] [VP confide [PP in you PP] VP]?
+
+			As with Noun Phrases, Verb Phrases can be identified by a constituency test. In strong constituency languages like
+			English, the whole VP can be moved, but not part of it: compare 31 and 32:
+
+			(31)  	  Give in to blackmail, I never will
+			(32)  	*Give in, I never will to blackmail
+			
+			However, there are languages in which constituent tests do not work. These will typically be languages with flexible
+			word order, such as Finnish. 33 is an example of a discontinuous VP (Vilkuna 1989: 26):
+
+			(33)  	Maailmaa	nähnyt	hän	on.
+			    	world-Part	seen	he	is
+					`He IS a widely-travelled person.'
+
+			For Finnish, then, evidence for a VP is less convincing than it is for English, and a dependency approach seems the
+			more natural choice. (Covington (1990) provides a parsing strategy for variable word order languages and Covington
+			(1991) for parsing discontinuous constituents, both using a dependency syntax approach.)
+
+			In Italian also, constituency tests cannot be applied. This can be shown through the distribution of VP-adverbs
+			(e.g. completamente `completely', intenzionalmente `intentionally', attentamente `carefully') and S-adverbs (e.g.
+			probabilmente `probably', certamente `certainly'). In English, these different classes of adverbs have a different
+			distribution within the sentence. In contrast, in Italian, the distinct adverb classes cannot be distinguished on
+			the basis of their distribution in the sentence. S-adverbs and VP-adverbs can occur in the same positions within the
+			sentence, as illustrated in examples 34 to 37:
+
+			(34)  	Attentamente/certamente, il bambino ascoltó la storia
+					`Carefully/certainly, the child listened to the story'
+			(35)  	Il bambino attentamente/certamente ascoltó la storia
+					`The child carefully/certainly listened to the story'
+			(36)  	Il bambino ascoltó attentamente/certamente la storia
+					`The child listened carefully/certainly to the story'
+			(37)  	Il bambino ascoltó la storia attentamente/certamente
+					`The child listened to the story carefully/certainly'
+
+			Thus, in Italian as well as other languages, neither the position nor the syntactic context can help to decide
+			whether an adverb is an S-adverb or a VP-adverb; this can only be stated by considering its semantic content and the
+			way it relates to the content of the predicate or the sentence. This situation has consequences for the success of
+			standard VP-tests. 
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node33.html)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Phrase> .

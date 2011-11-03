@@ -1,0 +1,232 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#NullElement">
+    <rdfs:comment>Modelled like tokens, Santorini (1991, Â§4.2), Bies (1995, Â§2.3, Â§2.5)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment>The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
+    <rdfs:comment>Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences =&gt; UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. =&gt; Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... =&gt; Feature).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Gapping">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#NullElement"/>
+    <rdfs:comment>
+		The term "gapping" refers to a form of coordination in which the coordinated phrases after the rst
+		are incomplete. For instance, the gapped equivalent of the full coordination structure in (@18a) is given in
+		( 18b).
+			( 18)
+				a. Mary likes Bach and Susan likes Beethoven.
+				b. Mary likes Bach and Susan, Beethoven.
+		Gapped sequences like Susan, Beethoven should be labelled X. On the other hand, while coordination
+		constructions containing gapped sequences involve coordination of unlike categories, it is clear that the
+		entire coordination structure is a clause; hence, it should be labelled S.
+		(Santorini 1991)
+	</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Token">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+    <rdfs:comment>
+                            Character string surrounded by separators.
+                                (Gil Francopoulo; http://www.isocat.org/datcat/DC-1403)
+                            </rdfs:comment>
+    <rdfs:label>token</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#NullElement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#TokenLikeElement"/>
+    <rdfs:comment>Modelled like tokens, Santorini (1991, §4.2), Bies (1995, §2.3, §2.5)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#Gapping">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>*NOT*
+— anti-placeholder in template gapping
+(Bies et al. 1995)
+
+The term \gapping" refers to a form of coordination in which the coordinated phrases after the rst
+are incomplete. For instance, the gapped equivalent of the full coordination structure in (@18a) is given in
+( 18b).
+( 18)
+a. Mary likes Bach and Susan likes Beethoven.
+b. Mary likes Bach and Susan, Beethoven.
+Gapped sequences like Susan, Beethoven should be labelled X. On the other hand, while coordination
+________________________________________
+Page 22
+5 GUIDELINES FOR PROBLEMATIC CONSTRUCTIONS
+21
+constructions containing gapped sequences involve coordination of unlike categories, it is clear that the
+entire coordination structure is a clause; hence, it should be labelled S.
+(Santorini 1991)
+
+*NOT* is used in the template gapping procedure, along with “=” and a system of coindexation. See section 7 [Coordination] for more details on the template gapping approach.
+
+Unlike other null elements, correspondence to a *NOT* is shown by an “=” index on the bracket label, rather than by a “–” index on the null element itself.
+
+*NOT* is used very rarely (about 20 times in the entire WSJ corpus) when the “template” and “copy” are not entirely parallel. In principle, it can serve in two roles:
+
+
+4.7.1  In the “copy”
+In the copy, *NOT* can be used to indicate that the corresponding constituent in the template is not interpreted in the “copy”. 
+
+  (S (NP-SBJ the auditor)
+     (VP (VP (ADVP-TMP-2 first)
+             described
+             (NP-3 the old plan)
+             (PP-CLR-4 as
+                       (ADJP ill conceived))
+             (PRN -LRB-
+                  (SBAR-ADV-5 as
+                              (S (NP-SBJ everyone)
+                                 (ADVP-TMP already)
+                                 (VP agreed)))
+                  -RRB-))
+         but
+         (VP (ADVP-TMP=2 then)
+             (NP=3 (NP the new plan)
+                   (SBAR (WHNP-1 that)
+                         (S (NP-SBJ we)
+                            (VP 'd
+                                (VP worked
+                                    (ADVP-MNR so hard)
+                                    (PP-CLR on
+                                            (NP *T*-1)))))))
+             (PP-CLR=4 as
+                       (UCP (PP out (PP to (NP lunch)))
+                            and
+                            (ADJP totally half-baked)))
+             (ADVP=5 *NOT*))))
+
+Note that it is very difficult to construct a grammatical example, so (unsurprisingly) there are no actual examples of this construction in the WSJ corpus.
+
+
+4.7.2  In the “template”
+In the template, *NOT* appears in the position where the corresponding constituent in the copy is interpreted, when there is no matching constituent already in the template. 
+
+  (S (NP-SBJ (NP The 189 Democrats)
+             (SBAR (WHNP-1 who)
+                   (S (NP-SBJ *T*-1)
+                      (VP supported
+                          (NP the override)
+                          (NP-TMP yesterday)))))
+     (VP compare
+         (PP-CLR with
+                 (NP (NP (NP-3 175)
+                         (SBAR (WHNP-2 who)
+                               (S (NP-SBJ *T*-2)
+                                  (ADVP initially)
+                                  (VP backed
+                                      (NP the rape-and-incest exemption)
+                                      (ADVP-TMP-4 (NP two weeks)
+                                                  ago)
+                                      (PP-5 *NOT*)))))
+                     and
+                     (NP (NP=3 136)
+                         (NP-TMP=4 last year)
+                         (PP=5 on
+                               (NP a similar vote)))))))
+
+More often than not, however, it is assumed that an unindexed constituent at top level of the “copy” is interpreted at highest possible level – usually VP-level of the template. (Note that this rule doesn't work in the above example, so it actually needs the *NOT*.)
+
+So the following examples: 
+
+  (S (NP The teacher)
+     (VP (VP gave
+             (NP-1 Ignatius)
+             (NP-2 only a B)
+             (SBAR-3 *NOT*))
+         ,
+         but
+         (VP (NP=1 Bertha)
+             (NP=2 an A)
+             (SBAR-PRP=3 because
+                         (S (NP-SBJ she)
+                            (VP wrote
+                                (ADVP-MNR so well)))))))
+
+
+  (VP (VP increasing
+          (PP-DIR-2 to
+                    (NP 2.5 %))
+          (PP-TMP-3 in
+                    (NP February 1991))
+          (ADVP-TMP-4 *NOT*))
+      ,
+      and
+      (VP (PP-DIR=2 to
+                    (NP 3 %))
+          (PP-TMP=3 at
+                    (NP six-month intervals))
+          (ADVP-TMP=4 thereafter)))
+
+might more likely be bracketed: 
+
+  (S (NP The teacher)
+     (VP (VP gave
+             (NP-1 Ignatius)
+             (NP-2 only a B))
+         ,
+         but
+         (VP (NP=1 Bertha)
+             (NP=2 an A)
+             (SBAR-PRP because
+                       (S (NP-SBJ she)
+                          (VP wrote
+                              (ADVP-MNR so well)))))))
+
+
+  (VP (VP increasing
+          (PP-DIR-2 to
+                    (NP 2.5 %))
+          (PP-TMP-3 in
+                    (NP February 1991)))
+      ,
+      and
+      (VP (PP-DIR=2 to
+                    (NP 3 %))
+          (PP-TMP=3 at
+                    (NP six-month intervals))
+          (ADVP-TMP thereafter)))
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#NullElement"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Gapping"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdfs:comment>A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#TokenLikeElement">
+    <rdfs:comment>Special tokens and pseudo tokens for null elements.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Token"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#NOT">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+</rdf:RDF>

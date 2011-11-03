@@ -1,0 +1,96 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept">
+    <rdfs:comment>The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment>Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences =&gt; UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. =&gt; Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... =&gt; Feature).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#Word">
+    <rdfs:label>word</rdfs:label>
+    <rdfs:comment>
+		SyntacticWord is the class of syntactic units occupying the lowest position in 
+		a syntactic construction. They are the largest units resistant to insertion of 
+		new constituents within their boundaries; or they are the smallest constituents 
+		that can be moved within a sentence without making the sentence ungrammatical.
+		(http://www.linguistics-ontology.org/gold/2008/SyntacticWord)
+		
+		Linguistic unit composed of at least a part of speech and a lemma.
+        (Gil Francopoulo; http://www.isocat.org/datcat/DC-1415)
+	</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#NonFiniteVerb">
+    <rdfs:comment>
+             Verb forms occurring on their own only in dependent clauses and lacking tense and mood contrasts.
+			 (adapted from Crystal 2003; http://www.isocat.org/datcat/DC-1332)
+			 
+			A non-finite verb is a verb that is not fully inflected for categories that are marked inflectionally in a language, 
+			such as the following: Tense, Aspect, Modality, Number,  Person.  
+			(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsANonfiniteVerb.htm 19.09.06)
+		</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Verb"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn.owl#Verb">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Verb"/>
+    <rdfs:comment>Inserted to structure the tag set.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn.owl#VBN">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn.owl#PastParticiple">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>This is a verb in past participle.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Participle"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Verb"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Verb">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Word"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory"/>
+    <rdfs:comment>
+		A verb is a part of speech that usually denotes action ("bring", "read"), 
+		occurrence ("decompose", "glitter"), or a state of being ("exist", "stand"). 
+		Depending on the language, a verb may vary in form according to many factors, 
+		possibly including its tense, aspect, mood and voice. It may also agree with 
+		the person, gender, and/or number of some of its arguments (subject, object, etc.).
+		(http://en.wikipedia.org/wiki/Verb 19.09.06)
+	</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn.owl#Tag">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Participle">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#NonFiniteVerb"/>
+    <rdfs:comment>
+	A participle is a lexical item, derived from a verb that has some of the characteristics and functions of both verbs and adjectives.
+	In English, participles may be used as adjectives, and in non-finite forms of verbs.
+	(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAParticiple.htm 19.09.06)
+	</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>

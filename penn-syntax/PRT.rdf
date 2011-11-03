@@ -1,0 +1,115 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#Constituent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+    <rdfs:comment>
+			Constituents correspond to a GOLD SyntacticConstruction:
+			SyntacticConstruction is the class of grammar units that 
+			have syntactic structure, i.e., consisting of more than 
+			one syntactic word or construction in a syntactic 
+			configuration. [Crystal 1980, 85-86]. 
+			(http://www.linguistics-ontology.org/gold/2008)
+
+			Corresponds to units of annotation in the EAGLES recommendations for syntactic annotation
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node29.html#SECTION00052000000000000000)
+		</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment>The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticCategory">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
+    <rdfs:comment>Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences =&gt; UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. =&gt; Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... =&gt; Feature).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Particle">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Unique"/>
+    <rdfs:comment>synonym of Unique, to be avoided because of its divergent definitions (Chiarcos)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#Word">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+    <rdfs:comment>
+		SyntacticWord is the class of syntactic units occupying the lowest position in 
+		a syntactic construction. They are the largest units resistant to insertion of 
+		new constituents within their boundaries; or they are the smallest constituents 
+		that can be moved within a sentence without making the sentence ungrammatical.
+		(http://www.linguistics-ontology.org/gold/2008/SyntacticWord)
+		
+		Linguistic unit composed of at least a part of speech and a lemma.
+        (Gil Francopoulo; http://www.isocat.org/datcat/DC-1415)
+	</rdfs:comment>
+    <rdfs:label>word</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#Particle">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>PRT
+— Particle. Category for words that should be tagged RP, as described in the POS guidelines [Santorini 1990], with some guidance from [Quirk et al. 1985] sections 16.3-16 in tricky ADVP vs. PRT decisions (but note that the Treebank notion of particle is somewhat different from that of Quirk et al.). 
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Particle"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#Phrase"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdfs:comment>A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Unique">
+    <rdfs:comment>
+		Unique approximates the linguistic concept "Particle".
+		It covers categories with unique or very small membership, 
+		such as negative particle, which are `unassigned' to any of the standard part-of-speech categories. 
+		(http://www.ilc.cnr.it/EAGLES96/annotate/node16.html#mp 19.09.06) 
+	</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Word"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#PRT">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Phrase">
+    <rdfs:comment>
+			Phrase is the class of syntactic constructions that consist of one or more 
+			syntactic words, but lack the subject-predicate organization of a clause. 
+			Phrases get their grammatical characteristics according to what word occupies 
+			the head position; thus, all phrases have heads [Crystal 1980, 232-233; Pei 
+			and Gaynor 1954, 169; Pike and Pike 1982, 453].
+			(http://purl.org/linguistics/gold/Phrase)
+		</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Constituent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#SyntaxTag">
+    <rdfs:comment>Santorini (1991, §4.1), in TIGER cat label of syntactic nodes</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#Phrase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#SyntaxTag"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Phrase"/>
+    <rdfs:comment>(Bies et al. 1995, §2.1.2)</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,122 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/penn-syntax.owl#WHPrepositionalPhrase>
+      a       owl:Class ;
+      rdfs:comment """WHPP|Wh-prepositional phrase. Prepositional phrase containing a wh-determiner, as in by whatever
+means necessary.
+(Santorini 1991)
+
+WHPP — Wh-prepositional Phrase. Prepositional phrase containing a wh-noun phrase (such as of which or by whose authority) that either introduces a PP gap or is contained by a WHNP. 
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#WHPrepositionalPhrase> , <http://purl.org/olia/penn-syntax.owl#Phrase> .
+
+<http://purl.org/olia/olia-top.owl#Constituent>
+      a       owl:Class ;
+      rdfs:comment """
+			Constituents correspond to a GOLD SyntacticConstruction:
+			SyntacticConstruction is the class of grammar units that 
+			have syntactic structure, i.e., consisting of more than 
+			one syntactic word or construction in a syntactic 
+			configuration. [Crystal 1980, 85-86]. 
+			(http://www.linguistics-ontology.org/gold/2008)
+
+			Corresponds to units of annotation in the EAGLES recommendations for syntactic annotation
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node29.html#SECTION00052000000000000000)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia.owl#NounHeadedPhrase>
+      a       owl:Class ;
+      rdfs:comment """
+			A NounHeadedPhrase takes a nominal as its (semantic) head. 
+			Introduced as a generalization over NounPhrase and PrepositionalPhrase for reasons of consistency with dependency parsers like 
+			Connexor where this differentiation is not made.
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Phrase> .
+
+<http://purl.org/olia/olia.owl#WHPrepositionalPhrase>
+      a       owl:Class ;
+      rdfs:comment """WHPP|Wh-prepositional phrase. Prepositional phrase containing a wh-determiner, as in by whatever
+means necessary.
+(Santorini 1991)
+
+WHPP â ´ Wh-prepositional Phrase. Prepositional phrase containing a wh-noun phrase (such as of which or by whose authority) that either introduces a PP gap or is contained by a WHNP. 
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#PrepositionalPhrase> .
+
+<http://purl.org/olia/olia-top.owl#SyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#WHPP>
+      a       owl:Thing .
+
+<http://purl.org/olia/olia.owl#PrepositionalPhrase>
+      a       owl:Class ;
+      rdfs:comment """
+			A sequence of a preposition and its complement is a prepositional phrase. The complement of a preposition is usually
+			a noun phrase (see examples 38 to 40), but may also be a clause or an adverb phrase. According to the categories
+			recommended here, a prepositional phrase may be analysed further into preposition and noun phrase. The examples
+			below demonstrate how this further analysis can be a recursive procedure.
+
+			(38)  	[PP en [NP sustitucion [PP de [NP los canales correspondientes [PP de [NP 50 baudios NP] PP] NP] PP] NP] PP].
+			(39)  	[NP Fairbanks NP] [VP hummed [NP a few bars NP] VP] [PP in [NP a voice [VP made resonant 
+					[PP by [NP the very weakness [PP of [NP his chest NP] PP] NP] PP] VP] NP] PP].
+			(40)  	[PP En [NP el caso [PP de [NP un sistema mixto [PP en [NP el 
+					[CL que [VP se utilicen [NP canales [PP con [NP tres velocidades 
+					[PP de [NP modulacion NP] PP] diferentes NP] PP] NP] VP] CL] NP] PP] NP] PP] NP] PP]
+
+			In a language such as Spanish, where a large proportion of the modification of nouns takes the form of a following
+			preposition de and another noun, this recursion is extremely prevalent, as in 40. In cases where the prepositional
+			phrase is complemented by a one word noun phrase, it may be advantageous to leave the analysis at this point, rather
+			than continuing to analyse further by enclosing the complement (see also one-word constituents).
+
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node34.html#SECTION00052500000000000000)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#NounHeadedPhrase> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/system.owl#UnitOfAnnotation>
+      a       owl:Class ;
+      rdfs:comment """A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    """ ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/olia.owl#Phrase>
+      a       owl:Class ;
+      rdfs:comment """
+			Phrase is the class of syntactic constructions that consist of one or more 
+			syntactic words, but lack the subject-predicate organization of a clause. 
+			Phrases get their grammatical characteristics according to what word occupies 
+			the head position; thus, all phrases have heads [Crystal 1980, 232-233; Pei 
+			and Gaynor 1954, 169; Pike and Pike 1982, 453].
+			(http://purl.org/linguistics/gold/Phrase)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#Constituent> .
+
+<http://purl.org/olia/penn-syntax.owl#SyntaxTag>
+      a       owl:Class ;
+      rdfs:comment "Santorini (1991, §4.1), in TIGER cat label of syntactic nodes" ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation> .
+
+<http://purl.org/olia/penn-syntax.owl#Phrase>
+      a       owl:Class ;
+      rdfs:comment "(Bies et al. 1995, §2.1.2)" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Phrase> , <http://purl.org/olia/penn-syntax.owl#SyntaxTag> .

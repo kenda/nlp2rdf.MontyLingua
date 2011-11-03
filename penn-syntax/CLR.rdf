@@ -1,0 +1,78 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#CloselyRelated">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>-CLR (closely related)
+— marks constituents that occupy some middle ground between argument and adjunct of the verb phrase. These roughly correspond to “predication adjuncts” , prepositional ditransitives , and some “phrasal verbs” , as defined in [Quirk et al. 1985].
+
+Although constituents marked with -CLR are not strictly speaking complements, they are treated as complements whenever it makes a bracketing difference (see the section on fronting in section 1 [Overview of Basic Clause Structure] and *RNR*-attach in section 8 [Shared Complements and Modifiers]).
+
+The precise meaning of -CLR depends somewhat on the category of its phrase: 
+on S or SBAR
+— These categories are usually arguments, so the -CLR tag indicates that the clause is more adverbial than normal clausal arguments. The most common case is the infinitival semicomplement of use, but there are a variety of other cases (see section 14 [Infinitives]).
+on PP, ADVP, SBAR-PRP, etc.
+— On categories that are ordinarily interpreted as (adjunct) adverbials, -CLR indicates a somewhat closer relationship to the verb. For example: 
+•	Prepositional Ditransitives 
+
+In order to ensure consistency, the Treebank recognizes only a limited class of verbs that take more than one complement, as described in this section (-DTV on page ?? and -PUT on page ??) and in section 15 [Small Clauses]. Verbs that fall outside these classes (including most of the prepositional ditransitive verbs in class [D2] in [Quirk et al. 1985]) are often annotated with -CLR: 
+	
+	  (VP associate
+	      (NP snow)
+	      (PP-CLR with
+	              (NP winter)))
+
+...
+
+•	Phrasal verbs 
+
+Phrasal verbs are also annotated with -CLR or a combination of PRT and PP-CLR. 
+	
+	  (VP pay
+	      (PP-CLR for
+	              (NP 500 shares)))
+...
+
+•	Predication Adjuncts 
+
+Many of Quirk's predication adjuncts (see [Quirk et al. 1985], especially sections 8.27–35, 15.22, &amp; 16.48) are annotated with -CLR. 
+	
+	  (VP place
+	      (NP the flour)
+	      (PP-LOC-CLR in
+	                  (NP the sifter)))
+...
+on NP
+— To the extent that -CLR is used on noun phrases, it indicates that the NP is part of some kind of “fixed phrase” or expression, such as take care of. 
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#Miscellaneous"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#CLR">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#Miscellaneous">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#FunctionTag"/>
+    <rdfs:comment>(Bies et al. 1995, §2.2.4)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#FunctionTag">
+    <rdfs:comment>Bies et al. (1995), func label of edges in TIGER</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
+    <rdfs:comment>Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences =&gt; UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. =&gt; Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... =&gt; Feature).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdfs:comment>UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation.</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>

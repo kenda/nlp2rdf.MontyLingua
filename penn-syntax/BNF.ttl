@@ -1,0 +1,150 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia.owl#Modifier>
+      a       owl:Class ;
+      rdfs:comment "added in conformance with TIGER" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticRole> .
+
+<http://purl.org/olia/olia.owl#BenefactorRole>
+      a       owl:Class ;
+      rdfs:comment """
+			A beneficiary (benefactor) instantiates the role of an entity (usually animate) who 
+			stands to benefit in some way from the event. Prototypically “benefit” 
+			here means “to do or be good to, to be of advantage or profit to; to 
+			improve, help forward” in some way.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#beneficiaryRole)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#UndergoerMacroRole> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/system.owl#Feature>
+      a       owl:Class ;
+      rdfs:comment "UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation." ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/olia-top.owl#SemanticFeature>
+      a       owl:Class ;
+      rdfs:comment "" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> , <http://purl.org/olia/system.owl#Feature> .
+
+<http://purl.org/olia/penn-syntax.owl#BNF>
+      a       owl:Thing .
+
+<http://purl.org/olia/olia.owl#UndergoerMacroRole>
+      a       owl:Class ;
+      rdfs:comment """
+			The least agentive argument of the current clause (van Valin and Lapolla 1997), 
+			the designated object (from a semantic perspective).
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SemanticRole> .
+
+<http://purl.org/olia/olia.owl#SyntacticAdjunct>
+      a       owl:Class ;
+      rdfs:comment """
+			Prototypically, an optional (morpho)syntactic constituent.
+
+			'Satellites are not ... required by the predicate; they give 
+			optional further information pertaining to additional features of the 
+			SoA ..., the location of the SoA ..., the speaker's attitude towards 
+			or evaluation of the propositional content ..., or the character of 
+			the speech act...' (Dik, 1997:87)
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#syntacticAdjunct)
+			
+			The category adjunct (ADJ) is assigned to those constituents that appear as optional additions, 
+			be it to the main verb or to a given noun. This means that they can be left out freely without 
+			a change in grammaticality or a significant change in meaning.
+			In  \"John called Mary (from school) (with his cell phone)\"  the optional additions \"from school\" 
+			and \"with his cell phone\" are such optional additions that can be left out freely.
+			Adjuncts are generally used to convey additional information about the time, place, manner, or 
+			cause of the event or situation described by the clause (see below). That is, they restrict the 
+			class of events/  situations described by the clause to a subset. If required the category ADJ 
+			can be split up into semantic sub-categories, that are annotated in layer semantic roles (time, 
+			location, etc.).
+			(Dipper et al. 2007, §4.3.3)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticRole> .
+
+<http://purl.org/olia/olia.owl#AdverbialModifier>
+      a       owl:Class ;
+      rdfs:comment """
+			An adverbial modifier modifies a verb.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#adverbialModifier)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#SyntacticAdjunct> , <http://purl.org/olia/olia.owl#Modifier> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/penn-syntax.owl#FunctionTag>
+      a       owl:Class ;
+      rdfs:comment "Bies et al. (1995), func label of edges in TIGER" ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#Feature> .
+
+<http://purl.org/olia/olia-top.owl#SyntacticFeature>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> , <http://purl.org/olia/system.owl#Feature> .
+
+<http://purl.org/olia/olia-top.owl#SyntacticRole>
+      a       owl:Class ;
+      rdfs:comment """Traditionally, \"grammatical relations\" or \"grammatical roles\" are specifically those between the verb (clause) and its arguments/adjunct/complementizer.
+      In modern corpus research, however, a broad variety of relations between nominal heads, their arguments, modifiers, etc. are distinguished and the scope of \"Grammatical Relation\" has extended here to cover these as well.
+      (http://purl.org/linguistics/gold/syntacticRole)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticFeature> .
+
+<http://purl.org/olia/penn-syntax.owl#Adjunct>
+      a       owl:Class ;
+      rdfs:comment """Adjuncts are also represented as sisters of heads. 
+Let’s (VP meet (PP on Tuesday))
+(Santorini 1991)
+
+cf. Adverbials (Bies et al. 1995, § 2.2.3)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#SyntacticAdjunct> , <http://purl.org/olia/penn-syntax.owl#FunctionTag> , <http://purl.org/olia/olia.owl#Modifier> .
+
+<http://purl.org/olia/penn-syntax.owl#BenefactiveAdverbial>
+      a       owl:Class ;
+      rdfs:comment """-BNF (benefactive)
+— marks the beneficiary of an action (attaches to NP or PP). 
+
+This tag is used only when (1) the verb can undergo dative shift and (2) the prepositional variant (with the same meaning) uses for. The prepositional objects of dative-shifting verbs with other prepositions than for (such as to or of) are annotated -DTV. 
+
+  (S (NP-SBJ I)
+     (VP baked
+         (NP-BNF Doug)
+         (NP a cake)))
+
+
+  (S (NP-SBJ I)
+     (VP baked
+         (NP a cake)
+         (PP-BNF for
+                 (NP Doug))))
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#AdverbialModifier> , <http://purl.org/olia/olia.owl#BenefactorRole> , <http://purl.org/olia/penn-syntax.owl#Adjunct> .
+
+<http://purl.org/olia/olia-top.owl#SemanticRole>
+      a       owl:Class ;
+      rdfs:comment """
+        In linguistics, a theta role or θ-role is the semantic role a noun 
+        phrase plays in a sentence. The term Thematic role denotes the same 
+        concept. As such it is a semantic rather than a syntactic feature, in 
+        contrast to such notions as the subject of a sentence or a 
+        prepositional object. 
+        (http://en.wikipedia.org/wiki/Subject_(linguistics).
+		
+		Originally, semantic roles were referred to as \"case roles\", leading to
+		an unfortunate name clash with grammatical case (e.g. in GOLD CaseValue)
+	""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SemanticFeature> .

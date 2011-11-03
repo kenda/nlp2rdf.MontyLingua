@@ -1,0 +1,94 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticConstruction">
+    <rdfs:comment>Syntactic constructions that involve multiple constituents, or that are independent of the concept of constituent, e.g., word order phenomena, non-canonical sentences , ...</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#Miscellaneous">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#FunctionTag"/>
+    <rdfs:comment>(Bies et al. 1995, §2.2.4)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept">
+    <rdfs:comment>The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#FunctionTag">
+    <rdfs:comment>Bies et al. (1995), func label of edges in TIGER</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#CLF">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#ItCleft">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>-CLF (cleft)
+— marks it-clefts (“true” clefts) and may be added to the labels S, SINV, or SQ. See section 16 [Clefts]. 
+
+  (SQ-CLF Was
+          (NP-SBJ it)
+          (NP-PRD (NP John's)
+                  car)
+          (SBAR (WHNP-6 0)
+                (S (NP-SBJ you)
+                   (VP borrowed
+                       (NP *T*-6))))
+          ?)
+(Bies et al. 1995)
+
+S-CLF
+(it-cleft or “true” cleft) 
+
+Declarative it-clefts are labeled S-CLF, expletive it is tagged as the surface subject (-SBJ), the SBAR is attached at VP-level, and a trace is coindexed to the wh-complementizer of the clefted portion. (See section 16 [Clefts] for more information.) 
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#Miscellaneous"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ItCleft"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#ItCleft">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticConstruction"/>
+    <rdfs:comment>-CLF (cleft)
+— marks it-clefts (“true” clefts) and may be added to the labels S, SINV, or SQ. See section 16 [Clefts]. 
+
+  (SQ-CLF Was
+          (NP-SBJ it)
+          (NP-PRD (NP John's)
+                  car)
+          (SBAR (WHNP-6 0)
+                (S (NP-SBJ you)
+                   (VP borrowed
+                       (NP *T*-6))))
+          ?)
+(Bies et al. 1995)
+
+S-CLF
+(it-cleft or “true” cleft) 
+
+Declarative it-clefts are labeled S-CLF, expletive it is tagged as the surface subject (-SBJ), the SBAR is attached at VP-level, and a trace is coindexed to the wh-complementizer of the clefted portion. (See section 16 [Clefts] for more information.) 
+(Bies et al. 1995)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
+    <rdfs:comment>Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences =&gt; UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. =&gt; Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... =&gt; Feature).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdfs:comment>UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation.</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>

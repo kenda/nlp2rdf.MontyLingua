@@ -1,0 +1,172 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#PersReflPronoun">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Pronoun"/>
+    <rdfs:comment>
+			In Eagles personal and reflexive pronouns are brought together as a single value Pers./Refl. 		
+			(http://www.ilc.cnr.it/EAGLES96/annotate/node17.html#recp 19.09.06)
+		</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment>The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#ExpletiveOfExtraposition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>*EXP*
+— Expletive (extraposition) ...
+In cases where a clausal subject has been extraposed and replaced by an expletive it, we use a type of pseudo-attach called *EXP*. (In the small ATIS sample included with this release, it is also used for existential there.) Use of *EXP*-attach is discussed in more detail in section 17 [It-Extraposition]. 
+
+  (S (NP-SBJ (NP It)
+             (SBAR *EXP*-1))
+     (VP is
+         (ADJP-PRD clear)
+         (PP to
+             (NP me))
+         (SBAR-1 that
+                 (S (NP-SBJ this message)
+                    (VP is
+                        (ADJP-PRD unclear))))))
+
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#NullElement"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ExpletivePronoun"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#ExpletivePronoun">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ThirdPersonPronoun"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Expletive"/>
+    <rdfs:comment>
+			An expletive (also known as a dummy word) is a part of speech whose members have no meaning, 
+			but complete a sentence to make it grammatical [Crystal 1997, 127]
+			(http://purl.org/linguistics/gold/Expletive)
+
+			In European languages, expletives are pronouns. A verbal part of speech that 
+			"has no meaning, but complete a sentence to make it grammatical" is a copula (see AuxiliaryVerb).
+		</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Pronoun">
+    <rdfs:comment>
+		A pronoun is a pro-form which functions like a noun and substitutes for a 
+		noun or a noun-phrase. A language may have several classes of pronouns.
+		(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAPronoun.htm 19.09.06)
+		
+		A pronominal is a phrase that functions as a pronoun
+        (www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAPronominal.htm; http://www.isocat.org/datcat/DC-1369)
+	</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#PronounOrDeterminer"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
+    <rdfs:comment>Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences =&gt; UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. =&gt; Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... =&gt; Feature).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Expletive">
+    <rdfs:label>expletive</rdfs:label>
+    <rdfs:comment>
+                            Word which serves no grammatical function, but which fills up a sentence or gives emphasis.
+                                (www.southwestern.edu/~carlg/Latin_Web/glossary.html; http://www.isocat.org/datcat/DC-1283)
+                            </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Unique"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#Word">
+    <rdfs:label>word</rdfs:label>
+    <rdfs:comment>
+		SyntacticWord is the class of syntactic units occupying the lowest position in 
+		a syntactic construction. They are the largest units resistant to insertion of 
+		new constituents within their boundaries; or they are the smallest constituents 
+		that can be moved within a sentence without making the sentence ungrammatical.
+		(http://www.linguistics-ontology.org/gold/2008/SyntacticWord)
+		
+		Linguistic unit composed of at least a part of speech and a lemma.
+        (Gil Francopoulo; http://www.isocat.org/datcat/DC-1415)
+	</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Token">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+    <rdfs:comment>
+                            Character string surrounded by separators.
+                                (Gil Francopoulo; http://www.isocat.org/datcat/DC-1403)
+                            </rdfs:comment>
+    <rdfs:label>token</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#NullElement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#TokenLikeElement"/>
+    <rdfs:comment>Modelled like tokens, Santorini (1991, §4.2), Bies (1995, §2.3, §2.5)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#PronounOrDeterminer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Word"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory"/>
+    <rdfs:comment>
+		The parts of speech Pronoun, Determiner and Article heavily overlap in their formal and functional 
+		characteristics, and different analyses for different languages entail separating them out in 
+		different ways.
+		In Eagles, Pronouns and Determiners are placed in one `super-category'. For some descriptions it may 
+		be thought best to treat them as totally different parts of speech.
+		(http://www.ilc.cnr.it/EAGLES96/annotate/node17.html#recp 19.09.06)
+	</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdfs:comment>A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Unique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Word"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory"/>
+    <rdfs:comment>
+		Unique approximates the linguistic concept "Particle".
+		It covers categories with unique or very small membership, 
+		such as negative particle, which are `unassigned' to any of the standard part-of-speech categories. 
+		(http://www.ilc.cnr.it/EAGLES96/annotate/node16.html#mp 19.09.06) 
+	</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#EXP">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#ThirdPersonPronoun">
+    <rdfs:comment>
+			Third person reference is a deictic reference to a referent(s) not identified as the speaker or addressee.
+			(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsThirdPersonDeixis.htm 19.09.06)
+		</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#PersReflPronoun"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#TokenLikeElement">
+    <rdfs:comment>Special tokens and pseudo tokens for null elements.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Token"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+</rdf:RDF>

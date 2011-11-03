@@ -1,0 +1,123 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/olia.owl#SubordinatingConjunction>
+      a       owl:Class ;
+      rdfs:comment """
+			Subordinating conjunctions, also called subordinators, are conjunctions 
+			that introduce a dependent clause.
+			(http://en.wikipedia.org/wiki/Grammatical_conjunction 19.09.06)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Conjunction> .
+
+<http://purl.org/olia/olia-top.owl#NullElement>
+      a       owl:Class ;
+      rdfs:comment "Modelled like tokens, Santorini (1991, Â§4.2), Bies (1995, Â§2.3, Â§2.5)" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/olia.owl#Conjunction>
+      a       owl:Class ;
+      rdfs:comment """
+		A conjunction is a word that syntactically links words or larger constituents, 
+		and expresses a semantic relationship between them.
+		(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAConjunction.htm 19.09.06)
+	""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#MorphosyntacticCategory> , <http://purl.org/olia/olia-top.owl#Word> .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia.owl#ZeroComplementizer>
+      a       owl:Class ;
+      rdfs:comment """0|Zero represents a zero complementizer (= subordinating conjunction); it may need to be deleted. The
+zero complementizer is generally the counterpart of the overt complementizer that. Example: Iâ ¹m sure 0
+heâ ¹ll be here any minute. ...
+
+0 stands in for overt subordinating conjunctions like that in tensed subordinate clauses, including
+relative clauses. So the relative clause the man I saw should be bracketed as follows:
+(NP (NP the man) (SBAR 0 (S (NP I) (VP saw) (NP T)))))
+
+(Santorini 1991)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#NullElement> , <http://purl.org/olia/olia.owl#SubordinatingConjunction> .
+
+<http://purl.org/olia/olia-top.owl#SyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia-top.owl#MorphosyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/olia-top.owl#Word>
+      a       owl:Class ;
+      rdfs:comment """
+		SyntacticWord is the class of syntactic units occupying the lowest position in 
+		a syntactic construction. They are the largest units resistant to insertion of 
+		new constituents within their boundaries; or they are the smallest constituents 
+		that can be moved within a sentence without making the sentence ungrammatical.
+		(http://www.linguistics-ontology.org/gold/2008/SyntacticWord)
+		
+		Linguistic unit composed of at least a part of speech and a lemma.
+        (Gil Francopoulo; http://www.isocat.org/datcat/DC-1415)
+	""" ;
+      rdfs:label "word" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/olia-top.owl#OrthographicEntity>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/olia.owl#Token>
+      a       owl:Class ;
+      rdfs:comment """
+                            Character string surrounded by separators.
+                                (Gil Francopoulo; http://www.isocat.org/datcat/DC-1403)
+                            """ ;
+      rdfs:label "token" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#OrthographicEntity> .
+
+<http://purl.org/olia/penn-syntax.owl#NullElement>
+      a       owl:Class ;
+      rdfs:comment "Modelled like tokens, Santorini (1991, §4.2), Bies (1995, §2.3, §2.5)" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#TokenLikeElement> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/penn-syntax.owl#zero>
+      a       owl:Thing .
+
+<http://purl.org/olia/system.owl#UnitOfAnnotation>
+      a       owl:Class ;
+      rdfs:comment """A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    """ ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/penn-syntax.owl#TokenLikeElement>
+      a       owl:Class ;
+      rdfs:comment "Special tokens and pseudo tokens for null elements." ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation> , <http://purl.org/olia/olia.owl#Token> .
+
+<http://purl.org/olia/penn-syntax.owl#ZeroComplementizer>
+      a       owl:Class ;
+      rdfs:comment """0|Zero represents a zero complementizer (= subordinating conjunction); it may need to be deleted. The
+zero complementizer is generally the counterpart of the overt complementizer that. Example: I’m sure 0
+he’ll be here any minute. ...
+
+0 stands in for overt subordinating conjunctions like that in tensed subordinate clauses, including
+relative clauses. So the relative clause the man I saw should be bracketed as follows:
+(NP (NP the man) (SBAR 0 (S (NP I) (VP saw) (NP T)))))
+
+(Santorini 1991)""" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#NullElement> , <http://purl.org/olia/olia.owl#ZeroComplementizer> .

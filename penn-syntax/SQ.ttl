@@ -1,0 +1,224 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/olia-top.owl#Constituent>
+      a       owl:Class ;
+      rdfs:comment """
+			Constituents correspond to a GOLD SyntacticConstruction:
+			SyntacticConstruction is the class of grammar units that 
+			have syntactic structure, i.e., consisting of more than 
+			one syntactic word or construction in a syntactic 
+			configuration. [Crystal 1980, 85-86]. 
+			(http://www.linguistics-ontology.org/gold/2008)
+
+			Corresponds to units of annotation in the EAGLES recommendations for syntactic annotation
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node29.html#SECTION00052000000000000000)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/penn-syntax.owl#Clause>
+      a       owl:Class ;
+      rdfs:comment """We distinguish among a number of basic clause types: S, SINV, SBAR, RRC, SBARQ, SQ, S-CLF, it-extraposition, and FRAG.
+(Bies et al. 1995)
+
+S-CLF is @cat=\"S\" & edge/@func=\"CLF\", so see under ItCleft""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Clause> , <http://purl.org/olia/penn-syntax.owl#SyntaxTag> .
+
+<http://purl.org/olia/olia-top.owl#SentenceTypeFeature>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticFeature> .
+
+<http://purl.org/olia/penn-syntax.owl#DirectQuestion>
+      a       owl:Class ;
+      rdfs:comment """There are two types of direct questions: yes-no questions and wh-questions. Yes-no questions should be
+bracketed as SQ. The auxiliary verb or form of do that precedes the subject in a yes-no question is a child
+of SQ. Note that yes-no questions need not contain a VP node
+(Santorini 1991)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#DirectQuestion> , <http://purl.org/olia/penn-syntax.owl#Question> .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia-top.owl#SyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia.owl#Clause>
+      a       owl:Class ;
+      rdfs:comment """
+			Traditionally sentences are deemed to be composed of major constituents 
+			known as clauses, which may be main clauses (not included in a superordinate 
+			clause) or embedded clauses (included in a superordinate clause) such as 
+			relative clauses or adverbial clauses. A main clause, unless it is coordinated, 
+			is equivalent to a simple sentence, and does not need to be separately labelled. 
+			Embedded and coordinated clauses, on the other hand, will need to be separately 
+			identified. We recommend that such units be identified in the annotation, and 
+			labelled either as sentences (S) or as clauses (CL), according to the preference 
+			specified in the annotation scheme.
+
+			The reason for allowing choice here is that different theoretical preferences 
+			have to be accommodated. In some syntactic models, the `clause' category is not 
+			used (except informally), embedded clauses being marked by included [S] 
+			constituents. In other models, clauses are identified as such, even where they 
+			are coextensive with an independent sentence.
+
+			One solution which commends itself (and is employed in the Lancaster Treebank and 
+			the SUSANNE Corpus) is to retain [S ... S] as the delimiter of sentences, whether 
+			included or not, and also to use [S ... S] for the coordinated parts of a compound 
+			sentence; but to use `clause' labels for subordinate clauses. An example which 
+			illustrates this division is 12:
+
+			(12)  	[S [S The distinction at issue is relatively clear S] , but [S closer 
+					examination reveals [CL that all is not quite so straightforward 
+					[CL as it seems CL] CL] S] . S]
+					
+			Embedded (subordinate) clauses are generally identified by some sign of their 
+			dependence on the superordinate clause or sentence, such as an introductory 
+			conjunction or a non-finite verb form. It is noticeable that the coordinated 
+			parts of the compound sentence do not have to be clause-like units with subjects 
+			and verbs, and to this extent [CL] would be a misleading label to apply to them. 
+			This is true, in 13, of so far so good in:
+
+			(13)  	[S [S So far so good S] , but [S now consider gender in adjectives S] . S] 
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node31.html)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#Constituent> .
+
+<http://purl.org/olia/penn-syntax.owl#YesNoQuestion>
+      a       owl:Class ;
+      rdfs:comment """There are two types of direct questions: yes-no questions and wh-questions. Yes-no questions should be
+bracketed as SQ. The auxiliary verb or form of do that precedes the subject in a yes-no question is a child
+of SQ. Note that yes-no questions need not contain a VP node
+(Santorini 1991)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#YesNoQuestion> , <http://purl.org/olia/penn-syntax.owl#DirectQuestion> .
+
+<http://purl.org/olia/system.owl#Feature>
+      a       owl:Class ;
+      rdfs:comment "UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation." ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/olia.owl#YesNoQuestion>
+      a       owl:Class ;
+      rdfs:comment """There are two types of direct questions: yes-no questions and wh-questions. Yes-no questions should be
+bracketed as SQ. The auxiliary verb or form of do that precedes the subject in a yes-no question is a child
+of SQ. Note that yes-no questions need not contain a VP node
+(Santorini 1991)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#DirectQuestion> .
+
+<http://purl.org/olia/penn-syntax.owl#QuestionPredicate>
+      a       owl:Class ;
+      rdfs:comment """SQ — Inverted yes/no question, or main clause of a wh-question, following the wh-phrase in SBARQ. 
+(Bies et al. 1995)
+
+SQ|That part of an SBARQ that excludes the wh-word or wh-phrase. See Section 5.32.
+(Santorini 1991)
+
+The SBARQ label marks wh-questions (i.e., those that contain a gap and therefore require a trace). A further level of structure, SQ, contains the inverted auxiliary (if there is one) and the rest of the sentence. The inverted auxiliary in wh-questions is not labeled. ...
+
+SQ
+(See also section 1.2.7.) 
+•	inside SBARQ:
+
+As described above, inside wh-questions, SQ holds the subject, inverted auxiliary (if any), main verb phrase, and some adjuncts.
+•	yes/no questions: 
+
+SQ is used for yes/no questions (i.e., those with inversion but no wh-movement). ...
+
+•	subject-less yes/no questions: 
+
+In questions where the auxiliary and subject do not appear, the auxiliary is unlabeled and a null subject (NP-SBJ *) is used. ...
+
+Note that questions with overt subjects and auxiliaries that show declarative word order are simply labeled S.
+
+•	Tag questions: 
+
+Tag questions are treated as an adjunction of SQ to S. The resulting structure is labeled SQ, since the whole thing is interrogative in nature. The lower SQ is annotated to show predicate deletion; that is, an appropriate null *?* is inserted. 
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#QuestionPredicate> , <http://purl.org/olia/penn-syntax.owl#Question> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/olia.owl#DirectQuestion>
+      a       owl:Class ;
+      rdfs:comment """There are two types of direct questions: yes-no questions and wh-questions. Yes-no questions should be
+bracketed as SQ. The auxiliary verb or form of do that precedes the subject in a yes-no question is a child
+of SQ. Note that yes-no questions need not contain a VP node
+(Santorini 1991)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Question> .
+
+<http://purl.org/olia/penn-syntax.owl#Question>
+      a       owl:Class ;
+      rdfs:comment """There are two types of questions: direct questions (which are main clauses ending with a question
+mark) and indirect questions (which are subordinate clauses embedded under a verb). In this section, we
+discuss only direct questions; indirect questions are bracketed as SBAR’s (see Section 5.17).
+(Santorini 1991)""" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#Clause> , <http://purl.org/olia/olia.owl#Question> .
+
+<http://purl.org/olia/olia.owl#QuestionPredicate>
+      a       owl:Class ;
+      rdfs:comment """SQ â ´ Inverted yes/no question, or main clause of a wh-question, following the wh-phrase in SBARQ. 
+(Bies et al. 1995)
+
+SQ|That part of an SBARQ that excludes the wh-word or wh-phrase. See Section 5.32.
+(Santorini 1991)
+
+The SBARQ label marks wh-questions (i.e., those that contain a gap and therefore require a trace). A further level of structure, SQ, contains the inverted auxiliary (if there is one) and the rest of the sentence. The inverted auxiliary in wh-questions is not labeled. ...
+
+SQ
+(See also section 1.2.7.) 
+â ¢	inside SBARQ:
+
+As described above, inside wh-questions, SQ holds the subject, inverted auxiliary (if any), main verb phrase, and some adjuncts.
+â ¢	yes/no questions: 
+
+SQ is used for yes/no questions (i.e., those with inversion but no wh-movement). ...
+
+â ¢	subject-less yes/no questions: 
+
+In questions where the auxiliary and subject do not appear, the auxiliary is unlabeled and a null subject (NP-SBJ *) is used. ...
+
+Note that questions with overt subjects and auxiliaries that show declarative word order are simply labeled S.
+
+â ¢	Tag questions: 
+
+Tag questions are treated as an adjunction of SQ to S. The resulting structure is labeled SQ, since the whole thing is interrogative in nature. The lower SQ is annotated to show predicate deletion; that is, an appropriate null *?* is inserted. 
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Question> .
+
+<http://purl.org/olia/system.owl#UnitOfAnnotation>
+      a       owl:Class ;
+      rdfs:comment """A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    """ ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/olia.owl#Question>
+      a       owl:Class ;
+      rdfs:comment """There are two types of questions: direct questions (which are main clauses ending with a question
+mark) and indirect questions (which are subordinate clauses embedded under a verb). In this section, we
+discuss only direct questions; indirect questions are bracketed as SBARâ ¹s (see Section 5.17).
+(Santorini 1991)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SentenceTypeFeature> .
+
+<http://purl.org/olia/olia-top.owl#SyntacticFeature>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> , <http://purl.org/olia/system.owl#Feature> .
+
+<http://purl.org/olia/penn-syntax.owl#SQ>
+      a       owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#SyntaxTag>
+      a       owl:Class ;
+      rdfs:comment "Santorini (1991, §4.1), in TIGER cat label of syntactic nodes" ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation> .

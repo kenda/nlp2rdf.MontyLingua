@@ -1,0 +1,140 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#Constituent">
+    <rdfs:comment>
+			Constituents correspond to a GOLD SyntacticConstruction:
+			SyntacticConstruction is the class of grammar units that 
+			have syntactic structure, i.e., consisting of more than 
+			one syntactic word or construction in a syntactic 
+			configuration. [Crystal 1980, 85-86]. 
+			(http://www.linguistics-ontology.org/gold/2008)
+
+			Corresponds to units of annotation in the EAGLES recommendations for syntactic annotation
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node29.html#SECTION00052000000000000000)
+		</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept">
+    <rdfs:comment>The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#NounHeadedPhrase">
+    <rdfs:comment>
+			A NounHeadedPhrase takes a nominal as its (semantic) head. 
+			Introduced as a generalization over NounPhrase and PrepositionalPhrase for reasons of consistency with dependency parsers like 
+			Connexor where this differentiation is not made.
+		</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Phrase"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
+    <rdfs:comment>Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences =&gt; UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. =&gt; Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... =&gt; Feature).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#NP">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#NounPhrase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>NP|Noun phrase. Phrasal category that includes all constituents that depend on a head noun.
+(Santorini 1991)
+
+NP — Noun Phrase. Phrasal category that includes all constituents that depend on a head noun. 
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#NounPhrase"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#Phrase"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    <rdfs:comment>A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Phrase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Constituent"/>
+    <rdfs:comment>
+			Phrase is the class of syntactic constructions that consist of one or more 
+			syntactic words, but lack the subject-predicate organization of a clause. 
+			Phrases get their grammatical characteristics according to what word occupies 
+			the head position; thus, all phrases have heads [Crystal 1980, 232-233; Pei 
+			and Gaynor 1954, 169; Pike and Pike 1982, 453].
+			(http://purl.org/linguistics/gold/Phrase)
+		</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia.owl#NounPhrase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#NounHeadedPhrase"/>
+    <rdfs:comment>
+			At phrase level, the noun phrase is probably the least problematic of the categories to be dealt 
+			with. In general, a noun phrase will a have noun or a pronoun as its head, and included within 
+			the noun phrase are the determinative elements, any premodification, and any postmodification. 
+			The examples below, 14 to 17 show noun phrases with the head noun/pronoun in bold:
+
+			(14)  	[NP He NP] was a tiny man
+			(15)  	[NP his white shirt cuffs NP]
+			(16)  	[NP his surprisingly thick and hairy wrists NP]
+			(17)  	[NP some wholly unanticipated but remotely possible event of absorbing interest NP]
+
+			However, noun phrases may also occur with adjectival heads, as in 18 and 19:
+
+			(18)  	[NP The unemployed NP] have had enough
+			(19)  	We've beaten [NP the best NP]
+
+			or with a head which is a cardinal or ordinal number, as in 20 and 21:
+
+			(20)  	[NP The ninth NP] is my particular favourite
+			(21)  	[NP The other seven NP] continued with the trip
+			
+			In `pro-drop' languages, such as Spanish and Italian, pronominal Subjects are usually not expressed. 
+			Depending on the chosen type of analysis, this may require another definition of noun phrase, in order 
+			to include `empty noun phrases', in which the pronoun is not actually present, but may be inferred 
+			from the verb ending.
+
+			A classic constituency test for Noun Phrases is that only whole NPs can be moved within the same sentence. 
+			In English, constituents can be preposed to achieve some effect, as in 23 (from Radford 1988: 70):
+
+			(22)  	I can't stand your elder sister
+			(23)  	Your elder sister I can't stand (though your brother's OK).
+			
+			Examples 24 and 25 show that it is not possible to move only part of the NP:
+
+			(24)  	*Your elder I can't stand sister
+			(25)  	*Elder sister, I can't stand your
+
+			However, this test should be used with caution. It works well in English, but not always in other languages. 
+			For example, in 26 Neue Bücher is moved to the beginning of the sentence while keine is left at the end:
+
+			(26) 	Neue	Bücher	habe	ich	keine
+					new	books	have	I	no
+					`I have not got any new books'
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node32.html)
+		</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#SyntaxTag">
+    <rdfs:comment>Santorini (1991, §4.1), in TIGER cat label of syntactic nodes</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/penn-syntax.owl#Phrase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn-syntax.owl#SyntaxTag"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Phrase"/>
+    <rdfs:comment>(Bies et al. 1995, §2.1.2)</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>

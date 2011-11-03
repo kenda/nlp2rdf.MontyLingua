@@ -1,0 +1,96 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/olia.owl#Topicalization>
+      a       owl:Class ;
+      rdfs:comment """Topicalization structures are ones where a non-subject immediately precedes a subject, which
+			immediately precedes the verb/auxiliary of the sentence. Two examples:
+			Pizza, John likes.
+			Tomorrow, I will go to the store.
+			Such examples should be bracketed as adjunction structures.
+			(Santorini 1991)
+			
+			-TPC (“topicalized”)
+			— marks elements that appear before the subject in a declarative sentence, but in two cases only: 
+			
+			(i) if the fronted element is associated with a *T* in the position of the gap.
+			
+			(ii) if the fronted element is left-dislocated (i.e., it is associated with a resumptive pronoun in the position of the gap). (See the section on fronted elements in section 1 [Overview of Basic Clause Structure] for more details on the treatment of fronted elements and the section on *T* with fronted elements in section 4 [Null Elements] for more details on the distribution of *T*.) 
+			(Bies et al. 1995)
+			
+			Fronted elements are placed inside the top clause level (e.g. S, SINV, SQ, SBAR). (Only certain fronted elements are tagged -TPC: (i) constituents associated with a *T* in the position of the gap and (ii) left-dislocated constituents (those associated with a resumptive pronoun in the position of the gap).) (See section 1 [Overview of Basic Clause Structure] for more details on the treatment of fronted elements.) 
+			(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Fronting> .
+
+<http://purl.org/olia/penn-syntax.owl#TPC>
+      a       owl:Thing .
+
+<http://purl.org/olia/olia-top.owl#SyntacticConstruction>
+      a       owl:Class ;
+      rdfs:comment "Syntactic constructions that involve multiple constituents, or that are independent of the concept of constituent, e.g., word order phenomena, non-canonical sentences , ..." ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/penn-syntax.owl#GrammaticalRole>
+      a       owl:Class ;
+      rdfs:comment "Bies et al. (1995, §2.2.2)" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#FunctionTag> .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia.owl#Fronting>
+      a       owl:Class ;
+      rdfs:comment "Expression occurs at the left periphery of the sentence. This includes various noncanonical and canonical word order possibilities. (Note that it is not restricted here to noncanonical word order; for noncanonical fronting see subconcepts, e.g., Topicalization.) (Chiarcos)" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticConstruction> .
+
+<http://purl.org/olia/penn-syntax.owl#FunctionTag>
+      a       owl:Class ;
+      rdfs:comment "Bies et al. (1995), func label of edges in TIGER" ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#Feature> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia-top.owl#SyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/penn-syntax.owl#Topicalized>
+      a       owl:Class ;
+      rdfs:comment """Topicalization structures are ones where a non-subject immediately precedes a subject, which
+immediately precedes the verb/auxiliary of the sentence. Two examples:
+Pizza, John likes.
+Tomorrow, I will go to the store.
+Such examples should be bracketed as adjunction structures.
+(Santorini 1991)
+
+Fronted elements are those that appear before the subject in a declarative sentence. They are placed inside the top clause level (e.g. S, SINV, SQ, SBAR).  ...
+Fronted arguments are attached under the main clause level. They always leave a *T* and are tagged -TPC. This holds whether the argument is fronted within a single clause or crosses more than one clause boundary. 
+(Bies et al. 1995)
+
+-TPC (“topicalized”)
+— marks elements that appear before the subject in a declarative sentence, but in two cases only: 
+
+(i) if the fronted element is associated with a *T* in the position of the gap.
+
+(ii) if the fronted element is left-dislocated (i.e., it is associated with a resumptive pronoun in the position of the gap). (See the section on fronted elements in section 1 [Overview of Basic Clause Structure] for more details on the treatment of fronted elements and the section on *T* with fronted elements in section 4 [Null Elements] for more details on the distribution of *T*.) 
+(Bies et al. 1995)
+
+Fronted elements are placed inside the top clause level (e.g. S, SINV, SQ, SBAR). (Only certain fronted elements are tagged -TPC: (i) constituents associated with a *T* in the position of the gap and (ii) left-dislocated constituents (those associated with a resumptive pronoun in the position of the gap).) (See section 1 [Overview of Basic Clause Structure] for more details on the treatment of fronted elements.) 
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Topicalization> , <http://purl.org/olia/penn-syntax.owl#GrammaticalRole> .
+
+<http://purl.org/olia/system.owl#Feature>
+      a       owl:Class ;
+      rdfs:comment "UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation." ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .

@@ -1,0 +1,111 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia-top.owl#SyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/olia-top.owl#MorphosyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia.owl#AuxiliaryVerb>
+      a       owl:Class ;
+      rdfs:comment """    
+		An auxiliary verb is a verb which accompanies the lexical verb of a verb phrase, 
+		and expresses grammatical distinctions not carried by the lexical verb, such as 
+		person, number, tense aspect, and voice. 
+		(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAnAuxiliaryVerb.htm 19.09.06)
+		
+		Besides modal verbs (\"semiauxiliary\") and \"strict\" auxiliary verbs, also copulas 
+		are classified under auxiliary verbs here, as this is a praxis applied in practically every
+		EAGLES-conformant morphosyntactic annotation scheme.
+
+		Part of speech referring to the set of verbs, subordinate to the main lexical verb which help 
+		to make distinction in mood, aspect, voice etc.
+        (Crystal 2003; http://www.isocat.org/datcat/DC-1244)
+        """ ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Verb> .
+
+<http://purl.org/olia/olia-top.owl#Word>
+      a       owl:Class ;
+      rdfs:comment """
+		SyntacticWord is the class of syntactic units occupying the lowest position in 
+		a syntactic construction. They are the largest units resistant to insertion of 
+		new constituents within their boundaries; or they are the smallest constituents 
+		that can be moved within a sentence without making the sentence ungrammatical.
+		(http://www.linguistics-ontology.org/gold/2008/SyntacticWord)
+		
+		Linguistic unit composed of at least a part of speech and a lemma.
+        (Gil Francopoulo; http://www.isocat.org/datcat/DC-1415)
+	""" ;
+      rdfs:label "word" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/penn.owl#Verb>
+      a       owl:Class ;
+      rdfs:comment "Inserted to structure the tag set." ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Verb> , <http://purl.org/olia/penn.owl#Tag> .
+
+<http://purl.org/olia/olia.owl#ModalVerb>
+      a       owl:Class ;
+      rdfs:comment """
+			Verb form that is usually used with another verb to express ideas such as possibilities, permission, or intention.
+            (Gil Francopoulo; http://www.isocat.org/datcat/DC-1329)
+		
+			A modal verb (also modal, modal auxiliary verb, modal auxiliary) is a type of auxiliary 
+			verb that is used to indicate modality. The use of auxiliary verbs to express modality 
+			is characteristic of Germanic languages.
+			(http://en.wikipedia.org/wiki/Modal_verb 19.09.06)
+			
+			In addition to main and auxiliary verbs, it may be useful (e.g. in English) to recognise an intermediate 
+			category of semi-auxiliary for such verbs as be going to, have got to, ought to.
+			(http://www.ilc.cnr.it/EAGLES96/annotate/node18.html#oav1v 20.09.06)
+			
+			The auxiliaries in English subdivide into the primary verbs `be', `have', and `do', which can also function 
+			as main verbs, and the modal auxiliaries such as `can', `will', and `would', which are uninflected, and always 
+			function as auxiliaries.
+			(http://www.ilc.cnr.it/EAGLES96/morphsyn/node158.html#SECTION00054800000000000000)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#AuxiliaryVerb> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/olia.owl#Verb>
+      a       owl:Class ;
+      rdfs:comment """
+		A verb is a part of speech that usually denotes action (\"bring\", \"read\"), 
+		occurrence (\"decompose\", \"glitter\"), or a state of being (\"exist\", \"stand\"). 
+		Depending on the language, a verb may vary in form according to many factors, 
+		possibly including its tense, aspect, mood and voice. It may also agree with 
+		the person, gender, and/or number of some of its arguments (subject, object, etc.).
+		(http://en.wikipedia.org/wiki/Verb 19.09.06)
+	""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#MorphosyntacticCategory> , <http://purl.org/olia/olia-top.owl#Word> .
+
+<http://purl.org/olia/penn.owl#Tag>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/penn.owl#MD>
+      a       owl:Thing .
+
+<http://purl.org/olia/penn.owl#ModalVerb>
+      a       owl:Class ;
+      rdfs:comment """This category includes all verbs that don't take an -s ending in the third person singular present: \"can\", 
+\"could\", (\"dare\"), \"may\", \"might\", \"must\", \"ought\", \"shall\", \"should\", \"will\", \"would\".""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#ModalVerb> , <http://purl.org/olia/penn.owl#Verb> .

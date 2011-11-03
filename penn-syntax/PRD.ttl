@@ -1,0 +1,150 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/penn-syntax.owl#PRD>
+      a       owl:Thing .
+
+<http://purl.org/olia/olia.owl#Predicate>
+      a       owl:Class ;
+      rdfs:comment """
+			The predicate is the relation between the Clause and a portion of a  clause, excluding the subject, 
+			that expresses something about the subject (Crystal 1980: 280; Hartmann and Stork 1972: 182; Pei and
+			Gaynor 1954: 173; Pike and Pike 1982: 40; Mish et al. 1990: 926; Crystal 1985: 241-242).
+			(http://purl.org/linguistics/gold/predicate)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticRole> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/penn-syntax.owl#GrammaticalRole>
+      a       owl:Class ;
+      rdfs:comment "Bies et al. (1995, §2.2.2)" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#FunctionTag> .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#FunctionTag>
+      a       owl:Class ;
+      rdfs:comment "Bies et al. (1995), func label of edges in TIGER" ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#Feature> .
+
+<http://purl.org/olia/olia-top.owl#SyntacticFeature>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> , <http://purl.org/olia/system.owl#Feature> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#Predicate>
+      a       owl:Class ;
+      rdfs:comment """The predicate is either the lowest (right-most branching) VP or (after copular verbs and in “small clauses”) a constituent tagged -PRD. Moved predicates leave a coindexed trace *T* in VP. ...
+-PRD (predicate) — marks any predicate that is not VP. 
+
+  (S (NP-SBJ I)
+     (VP consider
+         (S (NP-SBJ Kris)
+            (NP-PRD a fool))))
+
+
+  (SQ Was
+      (NP-SBJ he)
+      (ADVP-TMP ever)
+      (ADJP-PRD successful)
+      ?)
+
+In do so constructions, the so is annotated as a predicate. 
+
+  (S (NP-SBJ They)
+     (ADVP also)
+     (VP did
+         (ADVP-PRD so)))
+(Bies et al. 1995)
+
+Complements of the following verbs appear with the -PRD tag. This list should be considered exhaustive (see [Quirk et al. 1985] sections 16.21-24). 
+
+
+be (friendly/my friend/at home) [adj/n/adv]
+
+appear (happy/the only solution) [adj/n]
+feel (annoyed/a fool) [adj/n]
+look (pretty/a fine day) [adj/n]
+seem (restless/a genius) [adj/n]
+smell (sweet) [adj]
+sound (surprised/a reasonable idea) [adj/n]
+taste (bitter) [adj]
+
+remain (uncertain/good friends) [adj/n]
+keep (silent) [adj]
+stay (motionless/good friends) [adj/n]
+
+become (older/an expert) [adj/n]
+come (true) [adj]
+end up (happy/her slave) [adj/n]
+get (ready) [adj]
+go (sour) [adj]
+grow (tired) [adj]
+prove (rather useful/his equal) [adj/n]
+turn (cold/traitor) [adj/n]
+turn out (fortunate/a success) [adj/n]
+wind up (drunk/a millionaire) [adj/n]
+
+Adjectival
+
+  (S (NP-SBJ The dog)
+     (VP is/appears/seems
+         (ADJP-PRD happy)))
+
+Nominal
+  (S (NP-SBJ Your safety belt)
+     (VP is-PRD your friend))
+
+
+  (S (NP-SBJ-1 The former chief executive)
+     (VP will
+         (VP remain
+             (NP-PRD chairman)))
+     .)
+
+Adverbial
+Adverbial predicates should only be tagged -PRD when they follow be or in a do so construction. 
+	after be 
+	
+	  (S (NP-SBJ (NP much)
+	             (PP of
+	                 (NP the action)))
+	     (VP was
+	         (PP-LOC-PRD in
+	                     (NP heating oil))))
+
+Clausal
+Forms of be can also take clausal complements: 
+
+  (S (NP-SBJ its purpose)
+     (VP is
+         (S-PRD (NP-SBJ *)
+                (VP to
+                    (VP gauge
+                        (NP learning progress))))))
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Predicate> , <http://purl.org/olia/penn-syntax.owl#GrammaticalRole> .
+
+<http://purl.org/olia/olia-top.owl#SyntacticRole>
+      a       owl:Class ;
+      rdfs:comment """Traditionally, \"grammatical relations\" or \"grammatical roles\" are specifically those between the verb (clause) and its arguments/adjunct/complementizer.
+      In modern corpus research, however, a broad variety of relations between nominal heads, their arguments, modifiers, etc. are distinguished and the scope of \"Grammatical Relation\" has extended here to cover these as well.
+      (http://purl.org/linguistics/gold/syntacticRole)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticFeature> .
+
+<http://purl.org/olia/system.owl#Feature>
+      a       owl:Class ;
+      rdfs:comment "UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation." ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .

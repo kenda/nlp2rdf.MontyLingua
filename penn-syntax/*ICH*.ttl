@@ -1,0 +1,71 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/penn-syntax.owl#NullElement>
+      a       owl:Class ;
+      rdfs:comment "Modelled like tokens, Santorini (1991, §4.2), Bies (1995, §2.3, §2.5)" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#TokenLikeElement> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/system.owl#UnitOfAnnotation>
+      a       owl:Class ;
+      rdfs:comment """A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    """ ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/penn-syntax.owl#ICH>
+      a       owl:Thing .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#TokenLikeElement>
+      a       owl:Class ;
+      rdfs:comment "Special tokens and pseudo tokens for null elements." ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation> , <http://purl.org/olia/olia.owl#Token> .
+
+<http://purl.org/olia/olia-top.owl#OrthographicEntity>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/olia.owl#Token>
+      a       owl:Class ;
+      rdfs:comment """
+                            Character string surrounded by separators.
+                                (Gil Francopoulo; http://www.isocat.org/datcat/DC-1403)
+                            """ ;
+      rdfs:label "token" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#OrthographicEntity> .
+
+<http://purl.org/olia/penn-syntax.owl#DiscontinuousDependency>
+      a       owl:Class ;
+      rdfs:comment """*ICH*
+— Interpret Constituent Here (discontinuous dependency) ...
+The most common type of pseudo-attach is *ICH*-attach, which is used to indicate a relationship of constituency between elements separated by intervening material. For instance, *ICH*-attach is used in “heavy shift” constructions when the movement results in a configuration in which it is impossible to attach the constituent to the phrase it belongs with: 
+
+  (S (NP-SBJ (NP a young woman)
+             (SBAR *ICH*-1))
+     (VP entered
+         (SBAR-1 (WHNP-2 whom)
+                 (S (NP-SBJ she)
+                    (PP-TMP at
+                            (ADVP once))
+                    (VP recognized
+                        (NP *T*-2)
+                        (PP-CLR as
+                                (NP Jemima Broadwood)))))))
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#NullElement> .

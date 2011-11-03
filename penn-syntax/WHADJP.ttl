@@ -1,0 +1,96 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/olia-top.owl#Constituent>
+      a       owl:Class ;
+      rdfs:comment """
+			Constituents correspond to a GOLD SyntacticConstruction:
+			SyntacticConstruction is the class of grammar units that 
+			have syntactic structure, i.e., consisting of more than 
+			one syntactic word or construction in a syntactic 
+			configuration. [Crystal 1980, 85-86]. 
+			(http://www.linguistics-ontology.org/gold/2008)
+
+			Corresponds to units of annotation in the EAGLES recommendations for syntactic annotation
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node29.html#SECTION00052000000000000000)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#WHADJP>
+      a       owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#WHAdjectivePhrase>
+      a       owl:Class ;
+      rdfs:comment """WHADJP — Wh-adjective Phrase. Adjectival phrase containing a wh-adverb, as in how hot. 
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#WHAdjectivePhrase> , <http://purl.org/olia/penn-syntax.owl#Phrase> .
+
+<http://purl.org/olia/olia-top.owl#SyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia.owl#AdjectivePhrase>
+      a       owl:Class ;
+      rdfs:comment """
+			An adjective phrase may consist of an adjective, or a sequence of words in which an adjective is the head of the
+			phrase, as shown in 47 to 50 below.
+
+			(47)  	[NP his [ADJP surprisingly thick and hairy ADJP] wrists NP]
+			(48)  	[NP some [ADJP [ADJP wholly unanticipated ADJP] but [ADJP remotely possible ADJP] ADJP] event NP]
+			(49)  	[S [NP His speeches NP] [VP are [ADVP always ADVP] [ADJP too long [PP for comfort PP] ADJP] VP] S]
+			(50)  	[AUX have AUX] [NP you NP] [VP found [NP something 
+					[ADJP suitable [PP for [NP your needs NP] PP] ADJP] NP] VP] ?
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node36.html)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Phrase> .
+
+<http://purl.org/olia/olia.owl#WHAdjectivePhrase>
+      a       owl:Class ;
+      rdfs:comment """WHADJP â ´ Wh-adjective Phrase. Adjectival phrase containing a wh-adverb, as in how hot. 
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#AdjectivePhrase> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/system.owl#UnitOfAnnotation>
+      a       owl:Class ;
+      rdfs:comment """A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    """ ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/olia.owl#Phrase>
+      a       owl:Class ;
+      rdfs:comment """
+			Phrase is the class of syntactic constructions that consist of one or more 
+			syntactic words, but lack the subject-predicate organization of a clause. 
+			Phrases get their grammatical characteristics according to what word occupies 
+			the head position; thus, all phrases have heads [Crystal 1980, 232-233; Pei 
+			and Gaynor 1954, 169; Pike and Pike 1982, 453].
+			(http://purl.org/linguistics/gold/Phrase)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#Constituent> .
+
+<http://purl.org/olia/penn-syntax.owl#SyntaxTag>
+      a       owl:Class ;
+      rdfs:comment "Santorini (1991, §4.1), in TIGER cat label of syntactic nodes" ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation> .
+
+<http://purl.org/olia/penn-syntax.owl#Phrase>
+      a       owl:Class ;
+      rdfs:comment "(Bies et al. 1995, §2.1.2)" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Phrase> , <http://purl.org/olia/penn-syntax.owl#SyntaxTag> .

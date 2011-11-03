@@ -1,0 +1,138 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/olia-top.owl#NumberFeature>
+      a       owl:Class ;
+      rdfs:comment """
+            Grammatical category for the variation in form of nouns, pronouns, and any words agreeing 
+			with them, depending on how many persons or things are referred to.
+            (www.wordreference.com/English/definition.asp?en=number 12; http://www.isocat.org/datcat/DC-1298)
+
+			A grammatical number is a morphological category characterized by the expression of quantity 
+			through inflection or agreement. (http://en.wikipedia.org/wiki/Grammatical_number  17.11.06)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#MorphosyntacticFeature> .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia-top.owl#TenseFeature>
+      a       owl:Class ;
+      rdfs:comment "Tense is a grammatical category, typically marked on the verb, that deictically refers to the time of the event or state denoted by the verb in relation to some other temporal reference point. (http://www.sil.org/linguistics/glossaryoflinguisticterms/WhatIsTense.htm  17.11.06)" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#MorphosyntacticFeature> .
+
+<http://purl.org/olia/olia-top.owl#SyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia-top.owl#MorphosyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/penn.owl#VBP>
+      a       owl:Thing .
+
+<http://purl.org/olia/olia-top.owl#MorphosyntacticFeature>
+      a       owl:Class ;
+      rdfs:comment "Morphosyntactic and morphological features." ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> , <http://purl.org/olia/system.owl#Feature> .
+
+<http://purl.org/olia/olia.owl#AbsoluteTense>
+      a       owl:Class ;
+      rdfs:comment """
+			Absolute tense refers to a time in relation to the moment of utterance. 
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#absoluteTense with 
+			reference to http://www.sil.org/linguistics/glossaryoflinguisticterms/whatisabsolutetense.htm\")
+		""" ;
+      rdfs:label "absolute tense" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#TenseFeature> .
+
+<http://purl.org/olia/olia-top.owl#Word>
+      a       owl:Class ;
+      rdfs:comment """
+		SyntacticWord is the class of syntactic units occupying the lowest position in 
+		a syntactic construction. They are the largest units resistant to insertion of 
+		new constituents within their boundaries; or they are the smallest constituents 
+		that can be moved within a sentence without making the sentence ungrammatical.
+		(http://www.linguistics-ontology.org/gold/2008/SyntacticWord)
+		
+		Linguistic unit composed of at least a part of speech and a lemma.
+        (Gil Francopoulo; http://www.isocat.org/datcat/DC-1415)
+	""" ;
+      rdfs:label "word" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/system.owl#Feature>
+      a       owl:Class ;
+      rdfs:comment "UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation." ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/penn.owl#Verb>
+      a       owl:Class ;
+      rdfs:comment "Inserted to structure the tag set." ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Verb> , <http://purl.org/olia/penn.owl#Tag> .
+
+<http://purl.org/olia/penn.owl#BePresentTense>
+      a       owl:Class ;
+      rdfs:comment "These are verbforms in present tense. This class includes 3rd person singular or other than 3rd person singular verbforms." ;
+      rdfs:subClassOf <http://purl.org/olia/penn.owl#Verb> .
+
+<http://purl.org/olia/olia.owl#Singular>
+      a       owl:Class ;
+      rdfs:comment """
+			Singular is a grammatical number denoting a unit quantity (as opposed 
+			to the plural and other forms). (http://en.wikipedia.org/wiki/Singular
+			17.11.06)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#NumberFeature> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/olia.owl#Verb>
+      a       owl:Class ;
+      rdfs:comment """
+		A verb is a part of speech that usually denotes action (\"bring\", \"read\"), 
+		occurrence (\"decompose\", \"glitter\"), or a state of being (\"exist\", \"stand\"). 
+		Depending on the language, a verb may vary in form according to many factors, 
+		possibly including its tense, aspect, mood and voice. It may also agree with 
+		the person, gender, and/or number of some of its arguments (subject, object, etc.).
+		(http://en.wikipedia.org/wiki/Verb 19.09.06)
+	""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#MorphosyntacticCategory> , <http://purl.org/olia/olia-top.owl#Word> .
+
+<http://purl.org/olia/penn.owl#Tag>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/olia-top.owl#PersonFeature>
+      a       owl:Class ;
+      rdfs:comment """The grammatical person is deictic reference to the participant role of a referent, such as the speaker, the addressee, and others. Grammatical person typically defines a language's set of personal pronouns. It also frequently affects verbs, sometimes nouns, and possessive relationships as well. (http://en.wikipedia.org/wiki/Grammatical_person  17.11.06)
+	
+	Indication of grammatical person (1st, 2nd, 3rd, etc.) associated with a given inflected form.
+    (ISO12620; http://www.isocat.org/datcat/DC-1328)
+    """ ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#MorphosyntacticFeature> .
+
+<http://purl.org/olia/olia.owl#Present>
+      a       owl:Class ;
+      rdfs:comment """
+			Present tense refers to the moment of utterance.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#presentTense)
+		
+			Present tense refers to the moment of utterance. 
+			It often refers to events or states that do not merely coincide 
+			with the moment of utterance, such as those that are continuous, 
+			habitual, or lawlike. 
+			(http://www.sil.org/linguistics/glossaryoflinguisticterms/WhatIsPresentTense.htm  17.11.06)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#AbsoluteTense> .

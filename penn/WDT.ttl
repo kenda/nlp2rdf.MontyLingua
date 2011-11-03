@@ -1,0 +1,86 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/penn.owl#Determiner>
+      a       owl:Class ;
+      rdfs:comment "Not clear whether this corresponds to OLiA/EAGLES determiners, because some predeterminers seem to be adverbs rather than determiners proper." ;
+      rdfs:subClassOf <http://purl.org/olia/penn.owl#Tag> .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia.owl#WHDeterminer>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Determiner> .
+
+<http://purl.org/olia/olia-top.owl#SyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia-top.owl#MorphosyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/olia-top.owl#Word>
+      a       owl:Class ;
+      rdfs:comment """
+		SyntacticWord is the class of syntactic units occupying the lowest position in 
+		a syntactic construction. They are the largest units resistant to insertion of 
+		new constituents within their boundaries; or they are the smallest constituents 
+		that can be moved within a sentence without making the sentence ungrammatical.
+		(http://www.linguistics-ontology.org/gold/2008/SyntacticWord)
+		
+		Linguistic unit composed of at least a part of speech and a lemma.
+        (Gil Francopoulo; http://www.isocat.org/datcat/DC-1415)
+	""" ;
+      rdfs:label "word" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/penn.owl#WDT>
+      a       owl:Thing .
+
+<http://purl.org/olia/penn.owl#WhDeterminer>
+      a       owl:Class ;
+      rdfs:comment "This category includes \"which\", as well as that when it is used as a relative pronoun." ;
+      rdfs:subClassOf <http://purl.org/olia/penn.owl#Determiner> , <http://purl.org/olia/olia.owl#WHDeterminer> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/penn.owl#Tag>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/olia.owl#PronounOrDeterminer>
+      a       owl:Class ;
+      rdfs:comment """
+		The parts of speech Pronoun, Determiner and Article heavily overlap in their formal and functional 
+		characteristics, and different analyses for different languages entail separating them out in 
+		different ways.
+		In Eagles, Pronouns and Determiners are placed in one `super-category'. For some descriptions it may 
+		be thought best to treat them as totally different parts of speech.
+		(http://www.ilc.cnr.it/EAGLES96/annotate/node17.html#recp 19.09.06)
+	""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#MorphosyntacticCategory> , <http://purl.org/olia/olia-top.owl#Word> .
+
+<http://purl.org/olia/olia.owl#Determiner>
+      a       owl:Class ;
+      rdfs:comment """
+			A determiner is a noun modifier that expresses the reference of a noun or noun phrase 
+			in the context, including quantity, rather than attributes expressed by adjectives. 
+			This part of speech is defined in some languages, such as in English, as it is distinct 
+			from adjectives grammatically, though most English dictionaries still identify the 
+			determiners as adjectives. 
+			(http://en.wikipedia.org/wiki/Determiner 19.09.06)
+		""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#PronounOrDeterminer> .

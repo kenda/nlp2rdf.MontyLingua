@@ -1,0 +1,80 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/olia-top.owl#NullElement>
+      a       owl:Class ;
+      rdfs:comment "Modelled like tokens, Santorini (1991, Â§4.2), Bies (1995, Â§2.3, Â§2.5)" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#SyntacticCategory> .
+
+<http://purl.org/olia/olia-top.owl#LinguisticConcept>
+      a       owl:Class ;
+      rdfs:comment """The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.
+There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.""" ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/penn-syntax.owl#questionMark>
+      a       owl:Thing .
+
+<http://purl.org/olia/olia-top.owl#SyntacticCategory>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/system.owl#LinguisticAnnotation>
+      a       owl:Class ;
+      rdfs:comment "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." ;
+      rdfs:subClassOf owl:Thing .
+
+<http://purl.org/olia/olia-top.owl#OrthographicEntity>
+      a       owl:Class ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#LinguisticConcept> .
+
+<http://purl.org/olia/olia.owl#Token>
+      a       owl:Class ;
+      rdfs:comment """
+                            Character string surrounded by separators.
+                                (Gil Francopoulo; http://www.isocat.org/datcat/DC-1403)
+                            """ ;
+      rdfs:label "token" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#OrthographicEntity> .
+
+<http://purl.org/olia/olia.owl#Ellipsis>
+      a       owl:Class ;
+      rdfs:comment """*?* â ´ placeholder for ellipsed material ...
+
+*?* is now available in the following great-tasting flavors: (VP *?*), (ADJP-PRD *?*), (PP-PRD *), (NP *?*), (S *?*), (SBAR *?*). These act as placeholders for a missing predicate or piece thereof, especially in comparative constructions and other environments where predicate deletion occurs. Although the missing material represented by *?* is often identical to another constituent in the same sentence, the two are never coindexed. Postmodifiers of the verb (including traces) may be attached under (VP *?*), but not to any other null element, including the other *?* null elements and (VP *T*).
+
+Note that policy for *?* was never finalized, so its use varies to some extent. In general, *?* is used by the annotators as a last resort (short of the FRAG analysis) for the annotation of clauses with â ¼missingâ ½ material. Nonetheless, there are certain constructions that are particularly likely to contain *?*:
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia-top.owl#NullElement> .
+
+<http://purl.org/olia/penn-syntax.owl#NullElement>
+      a       owl:Class ;
+      rdfs:comment "Modelled like tokens, Santorini (1991, §4.2), Bies (1995, §2.3, §2.5)" ;
+      rdfs:subClassOf <http://purl.org/olia/penn-syntax.owl#TokenLikeElement> .
+
+owl:Thing
+      a       owl:Class .
+
+<http://purl.org/olia/system.owl#UnitOfAnnotation>
+      a       owl:Class ;
+      rdfs:comment """A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.
+Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.
+    """ ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#LinguisticAnnotation> .
+
+<http://purl.org/olia/penn-syntax.owl#TokenLikeElement>
+      a       owl:Class ;
+      rdfs:comment "Special tokens and pseudo tokens for null elements." ;
+      rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation> , <http://purl.org/olia/olia.owl#Token> .
+
+<http://purl.org/olia/penn-syntax.owl#Ellipsis>
+      a       owl:Class ;
+      rdfs:comment """*?* — placeholder for ellipsed material ...
+
+*?* is now available in the following great-tasting flavors: (VP *?*), (ADJP-PRD *?*), (PP-PRD *), (NP *?*), (S *?*), (SBAR *?*). These act as placeholders for a missing predicate or piece thereof, especially in comparative constructions and other environments where predicate deletion occurs. Although the missing material represented by *?* is often identical to another constituent in the same sentence, the two are never coindexed. Postmodifiers of the verb (including traces) may be attached under (VP *?*), but not to any other null element, including the other *?* null elements and (VP *T*).
+
+Note that policy for *?* was never finalized, so its use varies to some extent. In general, *?* is used by the annotators as a last resort (short of the FRAG analysis) for the annotation of clauses with “missing” material. Nonetheless, there are certain constructions that are particularly likely to contain *?*:
+(Bies et al. 1995)""" ;
+      rdfs:subClassOf <http://purl.org/olia/olia.owl#Ellipsis> , <http://purl.org/olia/penn-syntax.owl#NullElement> .
