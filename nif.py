@@ -144,7 +144,7 @@ class Wrapper():
             uri += hashlib.md5(context).hexdigest() + "_"
         uri += word[:20]
 
-        return prefix + urllib.quote_plus(uri)
+        return prefix + urllib.quote(uri)
     
     def pos_tag(self):
         # tag the text with MontyTagger
