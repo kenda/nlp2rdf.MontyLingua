@@ -135,12 +135,13 @@ class Wrapper():
             uri += str(index) + "_"
             uri += str(index + len(word)) + "_"
         elif self.options.get("urirecipe") == "context-hash":
+            con_len = self.options.get("context-length")
             uri = "hash_"
-            uri += "4_"
+            uri += str(con_len) + "_"
             uri += str(len(word)) + "_"
-            context = self.text[max(0,index-4):index]
+            context = self.text[max(0,index - con_len):index]
             context += "(" + word + ")"
-            context += self.text[index+len(word):min(len(self.text),index+len(word)+4)]
+            context += self.text[index+len(word):min(len(self.text),index+len(word) + con_len)]
             uri += hashlib.md5(context).hexdigest() + "_"
         uri += word[:20]
 
@@ -157,7 +158,8 @@ class Wrapper():
 if __name__ == "__main__":
     options = {
         'urirecipe': "context-hash",
-        'prefix': "http://example.com#"
+        'prefix': "http://example.com#",
+        'context-length': 6
         }
     text = raw_input("Text: ")
     print "---------------------"

@@ -70,7 +70,8 @@ class MyHandler(BaseHTTPRequestHandler):
             'nif': opt(qs.get('nif')),
             'format': opt(qs.get('format')),
             'prefix': opt(qs.get('prefix')),
-            'urirecipe': qs.get('urirecipe')[0] if qs.get('urirecipe') else "offset"
+            'urirecipe': qs.get('urirecipe')[0] if qs.get('urirecipe') else "offset",
+            'context-length': int(qs.get('context-length')[0]) if qs.get('context-length') else 10
             }
         
         return (input_text, options)
